@@ -1,25 +1,32 @@
 /* Signup.css */
 
+
 .signup-container {
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 90px 90px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px; 
+  margin-bottom: auto;
+  padding: 40px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 
-.input-container {
-    margin-bottom: 15px;
+
+.form-section{
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
-.image-section {
+.logo-section {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-.image-section img {
+.logo-section img {
     width: 150px; 
     height: auto;
     margin-bottom: 20px;
@@ -33,16 +40,18 @@
   }
 
 
-label {
+.labels-signup {
     display: block;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
-input {
+.inputs-signup {
     width: 100%;
-    padding: 10px 20px; /* Add 20px padding on the left and right */
     border: 1px solid #ccc;
     border-radius: 5px;
+    padding-bottom: 10px;
+    padding-top: 5px;
 }
 
 .signup-button {
@@ -58,3 +67,12 @@ input {
     margin-left: auto;
     margin-right: auto;
 }
+
+  /* Small devices (up to 576px) */
+  @media (max-width: 576px) {
+    body {
+      font-size: 14px;
+    }
+
+
+  }

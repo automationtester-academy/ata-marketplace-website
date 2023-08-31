@@ -63,15 +63,17 @@ const Signup = () => {
 
 
     return (
+        <div className="signup-containers">
         <div className="signup-container">
-            <div className="image-section">
+            <div className="logo-section">
                 <img src={logoImg} alt="Logo" />
             </div>
             <div className="form-section">
                 <h2 className='signup-title'> Créer Votre Compte</h2>
                 <div className="input-container">
-                    <label className="labels" htmlFor="firstName">Prénom *</label>
+                    <label className="labels-signup" htmlFor="firstName">Prénom *</label>
                     <input
+                        className='inputs-signup'
                         type="text"
                         id="firstName"
                         value={firstName}
@@ -81,9 +83,10 @@ const Signup = () => {
                     <p className="error-message">{firstNameError}</p>
                 </div>
                 <div className="input-container">
-                    <label className="labels" htmlFor="lastName">Nom *</label>
+                    <label className="labels-signup" htmlFor="lastName">Nom *</label>
                     <input
                         type="text"
+                        className='inputs-signup'
                         id="lastName"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
@@ -91,9 +94,10 @@ const Signup = () => {
                     <p className="error-message">{lastNameError}</p>
                 </div>
                 <div className="input-container">
-                    <label className="labels" htmlFor="email">Email *</label>
+                    <label className="labels-signup" htmlFor="email">Email *</label>
                     <input
                         type="email"
+                        className='inputs-signup'
                         id="email"
                         value={email}
                         data-e2e="email" 
@@ -102,9 +106,10 @@ const Signup = () => {
                     <p className="error-message">{emailError}</p>
                 </div>
                 <div className="input-container">
-                    <label className="labels" htmlFor="password">Mot de passe *</label>
+                    <label className="labels-signup" htmlFor="password">Mot de passe *</label>
                     <input
                         type="password"
+                        className='inputs-signup'
                         id="password"
                         value={password}
                         data-e2e="password" 
@@ -113,9 +118,10 @@ const Signup = () => {
                     <p className="error-message">{passwordError}</p>
                 </div>
                 <div className="input-container">
-                    <label className="labels" htmlFor="confirmPassword">Confirmation du mot de passe *</label>
+                    <label className="labels-signup" htmlFor="confirmPassword">Confirmation du mot de passe *</label>
                     <input
                         type="password"
+                        className='inputs-signup'
                         id="confirmPassword"
                         value={confirmPassword}
                         data-e2e="password-confirmation" 
@@ -125,6 +131,7 @@ const Signup = () => {
                 </div>
                 <button className="signup-button" onClick={handleSignup} data-e2e="submit-signup" >S'inscrire</button>
             </div>
+        </div>
         </div>
     );
 };
