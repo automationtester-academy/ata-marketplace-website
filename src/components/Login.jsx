@@ -36,8 +36,6 @@ const Login = () => {
         <div className="login-container">
             <div className="login-section">
 
-            
-
                     <div className="login-actions">
                     <div className="logo">
                         <img src={logoImg} alt="Logo" />
