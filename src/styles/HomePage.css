@@ -1,0 +1,74 @@
+/* HomePage.css */
+
+/* Style for the main container */
+.home-container {
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Style for the content */
+  .content {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style for the left side (title) */
+  .left {
+    flex: 1;
+  }
+  
+  /* Style for the title */
+  h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Style for the right side (search bar) */
+  .right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Style for the search bar */
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style for the search input */
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  /* Style for the search button */
+  button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Style for the search icon */
+  .fa-search {
+    font-size: 18px;
+  }
+
+  .homepage-cards {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+  }
+  
+  
