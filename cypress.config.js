@@ -7,4 +7,8 @@ module.exports = defineConfig({
       bundler: "webpack",
     },
   },
+  {
+    "componentTestFramework": "react",
+    "videoCompression": true
+  },
 });
