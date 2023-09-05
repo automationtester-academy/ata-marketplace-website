@@ -55,10 +55,14 @@
     padding: 10px 20px;
     cursor: pointer;
   }
-  
+
   /* Style for the search icon */
   .fa-search {
     font-size: 18px;
+  }
+
+  .btn-search:hover  {
+    background-color: #00C2A2;
   }
 
   .homepage-cards {

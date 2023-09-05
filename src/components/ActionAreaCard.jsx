@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import { CardActionArea } from '@mui/material';
 
 import { fetchItems } from './mockData'; 
-import mockData from './mockData'; 
 
 import '../styles/ActionAreaCard.css';
 
@@ -46,7 +45,11 @@ const ActionAreaCard = () => {
             </Typography>
             <div className="bottom-content">
               <p>{item.price}</p>
-              <Button variant="contained" className='custom-button'>
+              <Button
+               variant="contained"
+               className='consulter-button'
+               data-cy="submit-see-deatails"
+               >
                 Consulter
               </Button>
             </div>

@@ -36,7 +36,7 @@ const Login = () => {
         <div className="login-container">
             <div className="login-section">
 
-                    <div className="login-actions">
+                <div className="login-actions">
                     <div className="logo">
                         <img src={logoImg} alt="Logo" />
                     </div>
@@ -48,7 +48,7 @@ const Login = () => {
                                 className="inputs"
                                 type="text"
                                 id="username"
-                                data-e2e="username-login"
+                                data-cy="username-login"
                                 onChange={() => setUsernameError('')}
                             />
                             <p className="error-message" data-e2e="username-error">{usernameError}</p>
@@ -59,7 +59,7 @@ const Login = () => {
                                 className="inputs"
                                 type="password"
                                 id="password"
-                                data-e2e="password-login"
+                                data-cy="password-login"
                                 onChange={() => setPasswordError('')}
                             />
                             <p className="error-message" data-e2e="password-error">{passwordError}</p>
@@ -69,19 +69,29 @@ const Login = () => {
 
 
                         <div className="checkbox-forgotten">
-                            <input className="checkbox-input" type="checkbox" id="remember" data-e2e="remember-login" />
+                            <input
+                                className="checkbox-input"
+                                type="checkbox"
+                                id="remember"
+                                data-cy="remember-login" />
                             <label htmlFor="remember" className='label-mdp-oublié'>Mot de passe oublié ?</label>
                         </div>
 
-                        <button className="login-button" onClick={handleLogin} data-e2e="submit-login">Se Connecter</button>
+                        <button
+                            className="login-button"
+                            onClick={handleLogin}
+                            data-cy="submit-login"
+                        >
+                            Se Connecter
+                        </button>
                         <p className="sign-up-link">
                             Vous n'avez pas de compte ? <Link to="/signup"><a href="#">&nbsp;Inscrivez-vous !</a></Link>
                         </p>
                     </div>
-                    </div>
+                </div>
 
-                    <div className="user-actions">
-                        <hr className='hrs'></hr>
+                <div className="user-actions">
+                    <hr className='hrs'></hr>
                     <div className='users-auth'>
                         <div className="all-usernames">
                             <p className='user-title'>
@@ -98,9 +108,9 @@ const Login = () => {
                             <p>cypress-geek</p>
                         </div>
                     </div>
-                    </div>
+                </div>
 
-               
+
             </div>
         </div>
     );

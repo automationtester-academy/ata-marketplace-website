@@ -16,19 +16,26 @@ const HomePage = () => {
         </div>
         <div className="right">
           <div className="search-bar">
-            <input type="text" placeholder="Rechercher ici" />
-            <button className='btn-search'>
+            <input
+              type="text"
+              placeholder="Rechercher ici"
+              data-cy="search-products"
+            />
+            <button
+              className='btn-search'
+              data-cy="submit-search"
+            >
               <i className="fa fa-search"></i>
             </button>
           </div>
         </div>
       </div>
 
-        <div>
-          <ActionAreaCard />
-        </div>
-      
-      <Footer/>
+      <div>
+        <ActionAreaCard />
+      </div>
+
+      <Footer />
     </div>
   );
 };
