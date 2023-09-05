@@ -3,7 +3,6 @@
 /* Style for the main container */
 .home-container {
     margin: 0 auto;
-    padding: 20px;
   }
   
   /* Style for the content */
@@ -18,9 +17,10 @@
   }
   
   /* Style for the title */
-  h1 {
+  .left h1 {
     font-size: 24px;
     color: #333;
+    margin-left: 40px;
   }
   
   /* Style for the right side (search bar) */
@@ -34,6 +34,7 @@
   .search-bar {
     display: flex;
     align-items: center;
+    margin-right: 40px;
   }
   
   /* Style for the search input */
@@ -46,7 +47,7 @@
   }
   
   /* Style for the search button */
-  button {
+  .btn-search {
     background-color: #333;
     color: #fff;
     border: none;

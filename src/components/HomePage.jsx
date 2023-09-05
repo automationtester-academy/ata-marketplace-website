@@ -2,10 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
-import ActionAreaCardOne from './ActionAreaCardOne';
-import ActionAreaCardTwo from './ActionAreaCardTwo';
-import ActionAreaCardThree from './ActionAreaCardThree';
-import ActionAreaCardFor from './ActionAreaCardFor';
+import ActionAreaCard from './ActionAreaCard';
 
 import '../styles/HomePage.css';
 
@@ -20,20 +17,17 @@ const HomePage = () => {
         <div className="right">
           <div className="search-bar">
             <input type="text" placeholder="Rechercher ici" />
-            <button>
+            <button className='btn-search'>
               <i className="fa fa-search"></i>
             </button>
           </div>
         </div>
       </div>
-      <div className='homepage-cards'>
-        <div className='grid-container'>
-          <ActionAreaCardOne />
-          <ActionAreaCardTwo />
-          <ActionAreaCardThree />
-          <ActionAreaCardFor />
+
+        <div>
+          <ActionAreaCard />
         </div>
-      </div>
+      
       <Footer/>
     </div>
   );

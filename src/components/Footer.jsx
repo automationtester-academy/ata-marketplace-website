@@ -1,69 +1,76 @@
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import * as React from "react";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+import { Box } from "@mui/material";
 
-function Copyright() {
+export default function Footer() {
   return (
-    <Typography variant="body2" color="text.secondary">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
-export default function StickyFooter() {
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '20vh',
-        }}
-      >
-        <CssBaseline />
-        {/* <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="sm">
-          <Typography variant="h2" component="h1" gutterBottom>
-            Sticky footer
-          </Typography>
-          <Typography variant="h5" component="h2" gutterBottom>
-            {'Pin a footer to the bottom of the viewport.'}
-            {'The footer will move as the main element of the page grows.'}
-          </Typography>
-          <Typography variant="body1">Sticky footer placeholder.</Typography>
-        </Container> */}
-        <Box
-          component="footer"
-          sx={{
-            py: 3,
-            px: 2,
-            mt: 'auto',
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[200]
-                : theme.palette.grey[800],
-          }}
-        >
-          <Container maxWidth="sm">
-            <Typography variant="body1">
-              ATA
-              Copyright © 2023 Automation Tester Academy Tous droits réservés
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: "#E7F9F6",
+        mt: 15,
+        pb: 5,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Grid container spacing={5}>
+          <Grid item xs={12} sm={4}>
+            <Typography variant="h6" color="text.primary" gutterBottom>
+              A propos
             </Typography>
-            
-          </Container>
+            <Typography variant="body2" color="text.secondary">
+            Automation Tester Academy, dedié à fournir le meilleur service à nos clients.
+              clients.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Typography variant="h6" color="text.primary" gutterBottom>
+              Contactez nous!
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+            Rue Victor Hugo, Résidence Sofia, Appt12, Paris 70123, France
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Email: info@ata.com
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Phone: +1 234 567 8901
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Typography variant="h6" color="text.primary" gutterBottom>
+              Follow Us
+            </Typography>
+            <Link href="https://www.facebook.com/" color="inherit">
+              <Facebook />
+            </Link>
+            <Link
+              href="https://www.instagram.com/"
+              color="inherit"
+              sx={{ pl: 1, pr: 1 }}
+            >
+              <Instagram />
+            </Link>
+            <Link href="https://www.twitter.com/" color="inherit">
+              <Twitter />
+            </Link>
+          </Grid>
+        </Grid>
+        <Box mt={5}>
+          <Typography variant="body2" color="text.secondary" align="center">
+            {"Copyright © "}
+            <Link color="inherit" href="https://your-website.com/">
+              Automation Tester Academy
+            </Link>{" "}
+            {new Date().getFullYear()}
+            {"."}
+          </Typography>
         </Box>
-      </Box>
-    </ThemeProvider>
+      </Container>
+    </Box>
   );
 }
