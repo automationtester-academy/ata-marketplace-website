@@ -38,7 +38,7 @@
   }
   
   /* Style for the search input */
-  input[type="text"] {
+  .search-input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -76,4 +76,69 @@
     gap: 20px; 
   }
   
+  @media (max-width: 576px) {
+    body {
+      font-size: 14px;
+    }
+
+    .content{
+      margin: 10px;
+      
+    }
+    
+    .left h1{
+      font-size: 14px;
+      margin-left: 0;
+    }
+
+    .search-bar {
+      margin-right: 0;
+  }
+
+  .search-input {
+    padding: 5px;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.btn-search {
+  padding: 5px 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); 
+}
+
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+
+  }
+
+  @media (min-width: 769px) and (max-width: 992px) {
+    body {
+      font-size: 16px;
+    }
+
+  }
+
+  @media (min-width: 993px) and (max-width: 1200px) {
+    body {
+      font-size: 18px;
+    }
+  
+  
+  }
+
+  @media (min-width: 1201px) and (max-width: 1900px) {
+    body {
+      font-size: 18px;
+    }
+  
+
+  }
   

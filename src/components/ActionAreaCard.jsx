@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { CardActionArea } from '@mui/material';
 
-import { fetchItems } from './mockData'; 
+import { fetchItems } from './MockDatas/mockData'; 
 
 import '../styles/ActionAreaCard.css';
 
@@ -33,24 +33,26 @@ const ActionAreaCard = () => {
               height="540"
               image={item.imageUrl}
               alt="product pictures"
+              data-cy='img-product'
+              className='card-images'
             />
   
           </CardActionArea>
           <CardContent className='card-content'>
             <Typography gutterBottom variant="h5" component="div" className='product-name'>
-              <p>{item.title}</p>
+              <p data-cy='title-product'>{item.title}</p>
             </Typography>
             <Typography variant="body2" color="text.secondary" className='product-desc'>
-              <p>{item.description}</p>
+              <p data-cy='desc-product'>{item.description}</p>
             </Typography>
             <div className="bottom-content">
-              <p>{item.price}</p>
+              <p data-cy='price-product'>{item.price}</p>
               <Button
                variant="contained"
                className='consulter-button'
-               data-cy="submit-see-deatails"
+               data-cy="submit-see-details"
                >
-                Consulter
+                <span className='span-name'>Consulter</span>
               </Button>
             </div>
           </CardContent>

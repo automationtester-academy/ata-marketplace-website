@@ -12,20 +12,21 @@ const HomePage = () => {
       <Header />
       <div className="content">
         <div className="left">
-          <h1>Products</h1>
+          <h1 data-cy='title-products'>Products</h1>
         </div>
         <div className="right">
           <div className="search-bar">
             <input
+              className='search-input'
               type="text"
               placeholder="Rechercher ici"
               data-cy="search-products"
             />
             <button
               className='btn-search'
-              data-cy="submit-search"
+              data-cy="input-search"
             >
-              <i className="fa fa-search"></i>
+              <i className="fa fa-search" data-cy='submit-search'></i>
             </button>
           </div>
         </div>
