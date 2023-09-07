@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Login from '../__tests__/Login.test';
+import Login from '../__tests__/Login.test.js';
 
 test('renders login form', () => {
   const { getByText, getByLabelText } = render(<Login />);
