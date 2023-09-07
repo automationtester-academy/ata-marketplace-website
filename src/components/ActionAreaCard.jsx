@@ -30,7 +30,7 @@ const ActionAreaCard = () => {
           <CardActionArea>
             <CardMedia
               component="img"
-              height="540"
+              height="400"
               image={item.imageUrl}
               alt="product pictures"
               data-cy='img-product'
