@@ -1,40 +1,46 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import logoImg from '../images/ATA-logo.png';
 import '../styles/Login.css';
 
-import mockUser from './MockDatas/mockDataUser';
 
 const Login = () => {
-    const [usernameError, setUsernameError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [generalError, setGeneralError] = useState('');
-    const navigate = useNavigate(); // Initialize useNavigate
 
-    const [username, setUsername] = useState(''); // Define username state
-    const [password, setPassword] = useState(''); // Define password state
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+    });
 
-    const handleLogin = () => {
-        setUsernameError('');
-        setPasswordError('');
-        setGeneralError('');
+    const [data, setData] = useState([]);
+
+    // Refs for accessing input elements
+    const usernameRef = useRef(null);
+    const passwordRef = useRef(null);
+
+    // Load data from JSON file using useEffect
+    useEffect(() => {
+        // Load data from the JSON file
+        fetch('./userData.json')
+            .then((response) => response.json())
+            .then((jsonData) => {
+                setData(jsonData);
+                console.log('Data from JSON:', jsonData);
+            })
+            .catch((error) => {
+                console.error('Error loading data:', error);
+            });
+    }, []);
+
+    // Function to handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Username:', formData.username);
+        console.log('Password:', formData.password);
       
-        // Find the user in the JSON data
-        const user = mockUser.users.find((user) => user.username === username);
-      
-        if (!user) {
-          setUsernameError('User not found');
-        } else if (user.password === password) {
-          // Successful login
-          navigate('/home'); // Redirect to the dashboard or any other page
-        } else {
-          setPasswordError('Incorrect password');
-        }
-      };
-      
-    
-    
-    
+        // You can perform further actions like sending the data to an API or validating here.
+    };
+
+
 
     return (
         <div className="login-container">
@@ -42,34 +48,35 @@ const Login = () => {
 
                 <div className="login-actions">
                     <div className="logo">
-                        <img src={logoImg} alt="Logo"  data-cy="logo-img" />
+                        <img src={logoImg} alt="Logo" data-test="logo-img" />
                     </div>
 
-                    <div className="form-container">
+                    <form onSubmit={handleSubmit} className="form-container">
                         <div className="input-container">
-                            <label className="labels" htmlFor="username" data-cy="nom-utilisateur">Nom d'utilisateur</label>
+                            <label className="labels" htmlFor="username" data-test="nom-utilisateur">Nom d'utilisateur</label>
                             <input
                                 className="inputs"
                                 type="text"
                                 id="username"
-                                data-cy="username-login"
-                                onChange={() => setUsernameError('')}
+                                ref={usernameRef}
+                                value={formData.username}
+                                data-test="username-login"
+                                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                             />
-                            <p className="error-message" data-cy="username-error">{usernameError}</p>
                         </div>
                         <div className="input-container">
-                            <label className="labels" htmlFor="password" data-cy="Mot-de-passe">Mot de passe</label>
+                            <label className="labels" htmlFor="password" data-test="Mot-de-passe">Mot de passe</label>
                             <input
                                 className="inputs"
+                                data-test="password-login"
                                 type="password"
                                 id="password"
-                                data-cy="password-login"
-                                onChange={() => setPasswordError('')}
-                            />
-                            <p className="error-message" data-cy="password-error">{passwordError}</p>
-                        </div>
-                        <p className="error-message general-error">{generalError}</p>
+                                ref={passwordRef}
+                                value={formData.password}
+                                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
 
+                            />
+                        </div>
 
 
                         <div className="checkbox-forgotten">
@@ -77,22 +84,22 @@ const Login = () => {
                                 className="checkbox-input"
                                 type="checkbox"
                                 id="remember"
-                                data-cy="remember-login" />
-                            <label htmlFor="remember" className='label-mdp-oublié' data-cy='mdp-oublié'>Mot de passe oublié ?</label>
+                                data-test="remember-login" />
+                            <label htmlFor="remember" className='label-mdp-oublié' data-test='mdp-oublié'>Mot de passe oublié ?</label>
                         </div>
 
                         <button
+                            type="submit"
                             className="login-button"
-                            onClick={handleLogin}
-                            data-cy="submit-login"
+                            data-test="submit-login"
                         >
                             Se Connecter
                         </button>
-                        <p className="sign-up-link" data-cy='text-Inscrivez-vous'>
-                            Vous n'avez pas de compte ? 
-                            <Link to="/signup"><a href="#" data-cy='link-Inscrivez-vous'>&nbsp;Inscrivez-vous !</a></Link>
+                        <p className="sign-up-link" data-test='text-Inscrivez-vous'>
+                            Vous n'avez pas de compte ?
+                            <Link to="/signup"><a href="#" data-test='link-Inscrivez-vous'>&nbsp;Inscrivez-vous !</a></Link>
                         </p>
-                    </div>
+                    </form>
                 </div>
 
                 <div className="user-actions">
@@ -122,7 +129,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-

@@ -33,25 +33,26 @@ const ActionAreaCard = () => {
               height="400"
               image={item.imageUrl}
               alt="product pictures"
-              data-cy='img-product'
+              data-test='img-product'
               className='card-images'
             />
   
           </CardActionArea>
           <CardContent className='card-content'>
             <Typography gutterBottom variant="h5" component="div" className='product-name'>
-              <p data-cy='title-product'>{item.title}</p>
+              <p data-test='title-product'>{item.title}</p>
             </Typography>
             <Typography variant="body2" color="text.secondary" className='product-desc'>
-              <p data-cy='desc-product'>{item.description}</p>
+              <p data-test='desc-product'>{item.description}</p>
             </Typography>
             <div className="bottom-content">
-              <p data-cy='price-product'>{item.price}</p>
+              <p data-test='price-product'>{item.price}</p>
               <Button
                variant="contained"
                className='consulter-button'
-               data-cy="submit-see-details"
+               data-test="submit-see-details"
                >
+                
                 <span className='span-name'>Consulter</span>
               </Button>
             </div>

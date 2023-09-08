@@ -1,0 +1,16 @@
+ [
+      {
+        "username": "known_user",
+        "password": "cypress-geek"
+      },
+      {
+        "username": "login_user",
+        "password": "another_password"
+      },
+      {
+        "username": "geek_user",
+        "password": "yet_another_password"
+      }
+    ]
+  
+  

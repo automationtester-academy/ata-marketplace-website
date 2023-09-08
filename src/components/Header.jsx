@@ -10,9 +10,10 @@ const Header = () => {
   return (
     <nav className="navigation">
       <Link href="/home" className="brand-name">
-        <img src={logoImg} alt="Logo" data-cy="logo-img" />
+        <img src={logoImg} alt="Logo" data-test="logo-img" />
       </Link>
       <button
+       data-test="hamburger-icon"
         className="hamburger"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);
@@ -38,13 +39,13 @@ const Header = () => {
       >
         <ul>
           <li>
-            <Link to="/home"><a href="/home">Home</a></Link>
+            <Link to="/home" data-test="home-list">Home</Link>
           </li>
           <li>
-            <Link to="/about"><a href="/about">A Propos</a></Link>
+            <Link to="/about" data-test="apropos-list">A Propos</Link>
           </li>
           <li>
-            <Link to="/contact"><a href="/contact">Contactez Nous!</a></Link>
+            <Link to="/contact" data-test="connectez-list">Contactez Nous!</Link>
           </li>
         </ul>
       </div>

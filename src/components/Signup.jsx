@@ -66,60 +66,60 @@ const Signup = () => {
         <div className="signup-containers">
         <div className="signup-container">
             <div className="logo-section">
-                <img src={logoImg} alt="Logo" data-cy='logo-img'/>
+                <img src={logoImg} alt="Logo" data-test='logo-img'/>
             </div>
             <div className="form-section">
-                <h2 className='signup-title' data-cy='text-créer-compte'> Créer Votre Compte</h2>
+                <h2 className='signup-title' data-test='text-créer-compte'> Créer Votre Compte</h2>
                 <div className="input-container">
-                    <label className="labels-signup" htmlFor="firstName" data-cy='prenom'>Prénom *</label>
+                    <label className="labels-signup" htmlFor="firstName" data-test='prenom'>Prénom *</label>
                     <input
                         className='inputs-signup'
                         type="text"
                         id="firstName"
                         value={firstName}
-                        data-cy="input-prenom" 
+                        data-test="input-prenom" 
                         onChange={(e) => setFirstName(e.target.value)}
                     />
                     <p className="error-message">{firstNameError}</p>
                 </div>
                 <div className="input-container">
-                    <label className="labels-signup" htmlFor="lastName" data-cy='nom'>Nom *</label>
+                    <label className="labels-signup" htmlFor="lastName" data-test='nom'>Nom *</label>
                     <input
                         type="text"
                         className='inputs-signup'
                         id="lastName"
                         value={lastName}
-                        data-cy='input-nom'
+                        data-test='input-nom'
                         onChange={(e) => setLastName(e.target.value)}
                     />
                     <p className="error-message">{lastNameError}</p>
                 </div>
                 <div className="input-container">
-                    <label className="labels-signup" htmlFor="email" data-cy='email'>Email *</label>
+                    <label className="labels-signup" htmlFor="email" data-test='email'>Email *</label>
                     <input
                         type="email"
                         className='inputs-signup'
                         id="email"
                         value={email}
-                        data-cy="input-email" 
+                        data-test="input-email" 
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <p className="error-message">{emailError}</p>
                 </div>
                 <div className="input-container">
-                    <label className="labels-signup" htmlFor="password" data-cy='mot-de-passe'>Mot de passe *</label>
+                    <label className="labels-signup" htmlFor="password" data-test='mot-de-passe'>Mot de passe *</label>
                     <input
                         type="password"
                         className='inputs-signup'
                         id="password"
                         value={password}
-                        data-cy="input-password" 
+                        data-test="input-password" 
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <p className="error-message">{passwordError}</p>
                 </div>
                 <div className="input-container">
-                    <label className="labels-signup" htmlFor="confirmPassword" data-cy='confirm-mdp'>Confirmation du mot de passe *</label>
+                    <label className="labels-signup" htmlFor="confirmPassword" data-test='confirm-mdp'>Confirmation du mot de passe *</label>
                     <input
                         type="password"
                         className='inputs-signup'
@@ -130,7 +130,7 @@ const Signup = () => {
                     />
                     <p className="error-message">{confirmPasswordError}</p>
                 </div>
-                <button className="signup-button" onClick={handleSignup} data-cy="submit-signup" >S'inscrire</button>
+                <button className="signup-button" onClick={handleSignup} data-test="submit-signup" >S'inscrire</button>
             </div>
         </div>
         </div>
