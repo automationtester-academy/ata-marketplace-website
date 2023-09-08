@@ -1,45 +1,41 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logoImg from '../images/ATA-logo.png';
+import userData from '../userData.json'; // Import the JSON data
 import '../styles/Login.css';
-
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const Login = () => {
-
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
 
-    const [data, setData] = useState([]);
-
     // Refs for accessing input elements
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
-
-    // Load data from JSON file using useEffect
-    useEffect(() => {
-        // Load data from the JSON file
-        fetch('./userData.json')
-            .then((response) => response.json())
-            .then((jsonData) => {
-                setData(jsonData);
-                console.log('Data from JSON:', jsonData);
-            })
-            .catch((error) => {
-                console.error('Error loading data:', error);
-            });
-    }, []);
 
     // Function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Username:', formData.username);
         console.log('Password:', formData.password);
-      
+
         // You can perform further actions like sending the data to an API or validating here.
     };
 
+    // Use the useEffect hook to fetch data when the component mounts
+    useEffect(() => {
+        // Here, you can set the initial username and password values from the JSON data
+        // For example, you can set the username to the first user in the JSON data
+        setFormData({
+            username: userData[0].username,
+            password: '', // You can set an initial password value if needed
+        });
+
+        console.log('userData:', userData);
+        
+    }, []);
 
 
     return (
@@ -76,17 +72,51 @@ const Login = () => {
                                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
 
                             />
+                            <div>
+                             <p 
+                             className="label-regle-mdp" 
+                             htmlFor="password" 
+                             data-test="regle-mdp"
+                             >
+                            Le Mot de passe doit contenir au moins 8 caractères, 1 chiffre, 1 lettre majuscule, 1 lettre minuscule 
+                            </p>
+                            <p className='regle-checked'>
+                            <CheckCircleOutlineIcon/> <span>8 caractères</span>
+                            <CheckCircleOutlineIcon/> <span> 1 chiffre</span>
+                            <CheckCircleOutlineIcon/> <span>1 lettre majuscule</span>
+                            <CheckCircleOutlineIcon/> <span>1 lettre minuscule</span>
+                            </p>
+                            </div>
                         </div>
 
 
-                        <div className="checkbox-forgotten">
+                        <div className="psswd-forgotten">
+                            <Link 
+                            htmlFor="mdp-oublié" 
+                            className='label-mdp-oublié' 
+                            data-test='mdp-oublié'
+                            >
+                            Mot de passe oublié ?
+                            </Link>
+                        </div>
+
+                        <div className="checkbox-remember">
                             <input
                                 className="checkbox-input"
                                 type="checkbox"
                                 id="remember"
-                                data-test="remember-login" />
-                            <label htmlFor="remember" className='label-mdp-oublié' data-test='mdp-oublié'>Mot de passe oublié ?</label>
+                                data-test="remember-login" 
+                            />
+
+                            <label 
+                            htmlFor="remember" 
+                            className='label-mdp-oublié' 
+                            data-test='mdp-oublié'
+                            >
+                            Se souvenir de moi
+                            </label>
                         </div>
+
 
                         <button
                             type="submit"
