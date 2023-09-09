@@ -1,42 +1,50 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import logoImg from '../images/ATA-logo.png';
-import userData from '../userData.json'; // Import the JSON data
 import '../styles/Login.css';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import UserData from '../components/userData.json';
 
 const Login = () => {
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
+      username: '',
+      password: '',
     });
+  
+    const [errorGeneral, setErrorGeneral] = useState('');
+    const [errorUsername, setErrorUsername] = useState(''); 
+    const [errorPassword, setErrorPassword] = useState(''); 
 
-    // Refs for accessing input elements
+    const data = UserData;
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
-
+    const navigate = useNavigate();
+  
     // Function to handle form submission
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Username:', formData.username);
-        console.log('Password:', formData.password);
-
-        // You can perform further actions like sending the data to an API or validating here.
+      e.preventDefault();
+      setErrorGeneral("");
+      setErrorPassword("");
+      setErrorUsername("");
+      console.log('Username:', formData.username);
+      console.log('Password:', formData.password);
+      console.log(data);
+      let authorized = false;
+      data.forEach((user) => {
+        if (user.username === formData.username && user.password === formData.password) {
+          authorized = true;
+        }
+      });
+  
+      if (authorized) {
+        navigate('/home');
+      } else if (formData.username === ""){
+        setErrorUsername("Veuillez renseigner votre nom d'utilisateur");
+      }else if (formData.password === ""){
+        setErrorPassword("Veuillez renseigner votre mot de passe");
+      }else {
+        setErrorGeneral("Veuillez vérifier votre nom d'utilisateur ou mot de passe");
+      }
     };
-
-    // Use the useEffect hook to fetch data when the component mounts
-    useEffect(() => {
-        // Here, you can set the initial username and password values from the JSON data
-        // For example, you can set the username to the first user in the JSON data
-        setFormData({
-            username: userData[0].username,
-            password: '', // You can set an initial password value if needed
-        });
-
-        console.log('userData:', userData);
-        
-    }, []);
-
 
     return (
         <div className="login-container">
@@ -59,6 +67,10 @@ const Login = () => {
                                 data-test="username-login"
                                 onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                             />
+
+                    {errorUsername && <p className="error-message">{errorUsername}</p>}
+
+
                         </div>
                         <div className="input-container">
                             <label className="labels" htmlFor="password" data-test="Mot-de-passe">Mot de passe</label>
@@ -70,23 +82,13 @@ const Login = () => {
                                 ref={passwordRef}
                                 value={formData.password}
                                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-
                             />
-                            <div>
-                             <p 
-                             className="label-regle-mdp" 
-                             htmlFor="password" 
-                             data-test="regle-mdp"
-                             >
-                            Le Mot de passe doit contenir au moins 8 caractères, 1 chiffre, 1 lettre majuscule, 1 lettre minuscule 
-                            </p>
-                            <p className='regle-checked'>
-                            <CheckCircleOutlineIcon/> <span>8 caractères</span>
-                            <CheckCircleOutlineIcon/> <span> 1 chiffre</span>
-                            <CheckCircleOutlineIcon/> <span>1 lettre majuscule</span>
-                            <CheckCircleOutlineIcon/> <span>1 lettre minuscule</span>
-                            </p>
-                            </div>
+
+                        {errorPassword && <p className="error-message">{errorPassword}</p>}
+
+                        {errorGeneral && <p className="error-message">{errorGeneral}</p>}
+
+                          
                         </div>
 
 
@@ -116,7 +118,6 @@ const Login = () => {
                             Se souvenir de moi
                             </label>
                         </div>
-
 
                         <button
                             type="submit"

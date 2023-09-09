@@ -5,11 +5,15 @@
       },
       {
         "username": "login_user",
-        "password": "another_password"
+        "password": "cypress-geek"
       },
       {
         "username": "geek_user",
-        "password": "yet_another_password"
+        "password": "yet_cypress-geek"
+      },
+      {
+        "username": "enter_user",
+        "password": "yet_cypress-geek"
       }
     ]
   
