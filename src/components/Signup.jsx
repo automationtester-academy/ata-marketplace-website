@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import logoImg from '../images/ATA-logo.png';
-import { Link  } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 
 import Icon from 'react-icons-kit';
 import { basic_eye } from 'react-icons-kit/linea/basic_eye'
@@ -36,32 +36,35 @@ const Signup = () => {
 
     const verifFirstname = () => {
         const reg = new RegExp(/^[a-zA-Z]*$/);
-        if (reg.test(firstnameRef.current.value) === false) {
-            setverfFirstname(true)
+        if (reg.test(firstName) === false) {
+          setverfFirstname(true);
         } else {
-            setverfFirstname(false)
+          setverfFirstname(false);
         }
-    }
-
-    const verifLastname = () => {
+      };
+      
+      const verifLastname = () => {
         const reg = new RegExp(/^[a-zA-Z]*$/);
-        if (reg.test(lastnameRef.current.value) === false) {
-            setverfLastname(true)
+        if (reg.test(lastName) === false) {
+          setverfLastname(true);
         } else {
-            setverfLastname(false)
+          setverfLastname(false);
         }
-    }
-
-    const verifEmail = () => {
-        const reg = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-        if (reg.test(emailRef.current.value) === false) {
-            setverfEmail(true)
+      };
+      
+      const verifEmail = () => {
+        const reg = new RegExp(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+        if (reg.test(email) === false) {
+          setverfEmail(true);
         } else {
-            setverfEmail(false)
+          setverfEmail(false);
         }
-    }
+      };
+      
 
-
+    const navigate = useNavigate();
 
     const handleSignup = () => {
         // Reset previous error messages
@@ -104,7 +107,7 @@ const Signup = () => {
 
         if (isValid) {
             // If all validations passed, perform signup process
-            console.log('Sign up logic here');
+            navigate('/home');
         }
     };
 
@@ -178,7 +181,7 @@ const Signup = () => {
                             value={firstName}
                             data-test="input-prenom"
                             error={verfFirstname}
-                            onChange={(e) => {setFirstName(e.target.value); verifFirstname(e.target.value);}}
+                            onChange={(e) => setFirstName(e.target.value)}
                         />
                         <p className="error-message">{firstNameError}</p>
                     </div>
@@ -192,7 +195,7 @@ const Signup = () => {
                             value={lastName}
                             data-test='input-nom'
                             error={verfLastname}
-                            onChange={(e) => {setLastName(e.target.value); verifLastname(e.target.value);}}
+                            onChange={(e) => setLastName(e.target.value)}
                         />
                         <p className="error-message">{lastNameError}</p>
                     </div>
@@ -206,7 +209,7 @@ const Signup = () => {
                             value={email}
                             data-test="input-email"
                             error={verfEmail}
-                            onChange={(e) => {setEmail(e.target.value); verifEmail(e.target.value);}}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <p className="error-message">{emailError}</p>
                     </div>
@@ -325,14 +328,14 @@ const Signup = () => {
                         <p className="error-message">{confirmPasswordError}</p>
                     </div>
 
-                    <Link to="/home">
+                  
                         <button 
                         className="signup-button" 
                         onClick={handleSignup} 
                         data-test="submit-signup" >
                         S'inscrire
                         </button>
-                    </Link>
+                   
                 </form>
 
             </div>
