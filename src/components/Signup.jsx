@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import logoImg from '../images/ATA-logo.png';
 import { Link  } from 'react-router-dom';
 
@@ -23,6 +23,45 @@ const Signup = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
+
+    const [verfFirstname, setverfFirstname] = useState(false)
+    const [verfLastname, setverfLastname] = useState(false)
+    const [verfEmail, setverfEmail] = useState(false)
+
+    
+    const firstnameRef = useRef();
+    const lastnameRef = useRef();
+    const emailRef = useRef();
+
+
+    const verifFirstname = () => {
+        const reg = new RegExp(/^[a-zA-Z]*$/);
+        if (reg.test(firstnameRef.current.value) === false) {
+            setverfFirstname(true)
+        } else {
+            setverfFirstname(false)
+        }
+    }
+
+    const verifLastname = () => {
+        const reg = new RegExp(/^[a-zA-Z]*$/);
+        if (reg.test(lastnameRef.current.value) === false) {
+            setverfLastname(true)
+        } else {
+            setverfLastname(false)
+        }
+    }
+
+    const verifEmail = () => {
+        const reg = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        if (reg.test(emailRef.current.value) === false) {
+            setverfEmail(true)
+        } else {
+            setverfEmail(false)
+        }
+    }
+
+
 
     const handleSignup = () => {
         // Reset previous error messages
@@ -127,7 +166,7 @@ const Signup = () => {
                     <img src={logoImg} alt="Logo" data-test='logo-img' />
                 </div>
 
-                <div className="form-section">
+                <form onSubmit={handleSignup} className="form-section">
                     <h2 className='signup-title' data-test='text-créer-compte'> Créer Votre Compte</h2>
 
                     <div className="input-container">
@@ -138,7 +177,8 @@ const Signup = () => {
                             id="firstName"
                             value={firstName}
                             data-test="input-prenom"
-                            onChange={(e) => setFirstName(e.target.value)}
+                            error={verfFirstname}
+                            onChange={(e) => {setFirstName(e.target.value); verifFirstname(e.target.value);}}
                         />
                         <p className="error-message">{firstNameError}</p>
                     </div>
@@ -151,7 +191,8 @@ const Signup = () => {
                             id="lastName"
                             value={lastName}
                             data-test='input-nom'
-                            onChange={(e) => setLastName(e.target.value)}
+                            error={verfLastname}
+                            onChange={(e) => {setLastName(e.target.value); verifLastname(e.target.value);}}
                         />
                         <p className="error-message">{lastNameError}</p>
                     </div>
@@ -164,7 +205,8 @@ const Signup = () => {
                             id="email"
                             value={email}
                             data-test="input-email"
-                            onChange={(e) => setEmail(e.target.value)}
+                            error={verfEmail}
+                            onChange={(e) => {setEmail(e.target.value); verifEmail(e.target.value);}}
                         />
                         <p className="error-message">{emailError}</p>
                     </div>
@@ -283,7 +325,7 @@ const Signup = () => {
                         <p className="error-message">{confirmPasswordError}</p>
                     </div>
 
-                    <Link to="/">
+                    <Link to="/home">
                         <button 
                         className="signup-button" 
                         onClick={handleSignup} 
@@ -291,7 +333,7 @@ const Signup = () => {
                         S'inscrire
                         </button>
                     </Link>
-                </div>
+                </form>
 
             </div>
 
