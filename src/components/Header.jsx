@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import logoImg from '../images/ATA-logo.png';
 import { Link } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 import '../styles/Header.css';
 
 const Header = () => {
@@ -46,6 +48,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/contact" data-test="connectez-list">Contactez Nous!</Link>
+          </li>
+          <li>
+            <ShoppingCartIcon />
           </li>
         </ul>
       </div>

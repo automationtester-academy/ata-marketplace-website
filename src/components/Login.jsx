@@ -52,7 +52,7 @@ const Login = () => {
 
                 <div className="login-actions">
                     <div className="logo">
-                        <img src={logoImg} alt="Logo" data-testid="logo-img" />
+                        <img src={logoImg} alt="Logo" data-test="logo-img" />
                     </div>
 
                     <form onSubmit={handleSubmit} className="form-container">
@@ -60,7 +60,7 @@ const Login = () => {
                             <label 
                             className="labels" 
                             htmlFor="username" 
-                            data-testid="nom-utilisateur"
+                            data-test="nom-utilisateur"
                             >
                             Nom d'utilisateur
                             </label>
@@ -70,7 +70,7 @@ const Login = () => {
                                 id="username"
                                 ref={usernameRef}
                                 value={formData.username}
-                                data-testid="username-login"
+                                data-test="username-login"
                                 onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                             />
 
@@ -79,11 +79,11 @@ const Login = () => {
 
                         </div>
                         <div className="input-container">
-                            <label className="labels" htmlFor="password" data-testid="Mot-de-passe"
+                            <label className="labels" htmlFor="password" data-test="Mot-de-passe"
                             >Mot de passe</label>
                             <input
                                 className="inputs"
-                                data-testid="password-login"
+                                data-test="password-login"
                                 type="password"
                                 id="password"
                                 ref={passwordRef}
@@ -103,7 +103,7 @@ const Login = () => {
                             <Link 
                             htmlFor="mdp-oublié" 
                             className='label-mdp-oublié' 
-                            data-testid='mdp-oublié'
+                            data-test='mdp-oublié'
                             >
                             Mot de passe oublié ?
                             </Link>
@@ -114,13 +114,13 @@ const Login = () => {
                                 className="checkbox-input"
                                 type="checkbox"
                                 id="remember"
-                                data-testid="remember-login" 
+                                data-test="remember-login" 
                             />
 
                             <label 
                             htmlFor="remember" 
                             className='label-mdp-oublié' 
-                            data-testid='mdp-oublié'
+                            data-test='mdp-oublié'
                             >
                             Se souvenir de moi
                             </label>
@@ -129,12 +129,12 @@ const Login = () => {
                         <button
                             type="submit"
                             className="login-button"
-                            data-testid="submit-login"
+                            data-test="submit-login"
                         >
                             Se Connecter
                         </button>
                         
-                        <p className="sign-up-link" data-testid='text-Inscrivez-vous'>
+                        <p className="sign-up-link" data-test='text-Inscrivez-vous'>
                             Vous n'avez pas de compte ?
                             <Link to="/signup" data-test='link-Inscrivez-vous'>
                                     &nbsp;Inscrivez-vous !

@@ -24,44 +24,7 @@ const Signup = () => {
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
-    const [verfFirstname, setverfFirstname] = useState(false)
-    const [verfLastname, setverfLastname] = useState(false)
-    const [verfEmail, setverfEmail] = useState(false)
 
-    
-    const firstnameRef = useRef();
-    const lastnameRef = useRef();
-    const emailRef = useRef();
-
-
-    const verifFirstname = () => {
-        const reg = new RegExp(/^[a-zA-Z]*$/);
-        if (reg.test(firstName) === false) {
-          setverfFirstname(true);
-        } else {
-          setverfFirstname(false);
-        }
-      };
-      
-      const verifLastname = () => {
-        const reg = new RegExp(/^[a-zA-Z]*$/);
-        if (reg.test(lastName) === false) {
-          setverfLastname(true);
-        } else {
-          setverfLastname(false);
-        }
-      };
-      
-      const verifEmail = () => {
-        const reg = new RegExp(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
-        if (reg.test(email) === false) {
-          setverfEmail(true);
-        } else {
-          setverfEmail(false);
-        }
-      };
       
 
     const navigate = useNavigate();
@@ -180,7 +143,7 @@ const Signup = () => {
                             id="firstName"
                             value={firstName}
                             data-test="input-prenom"
-                            error={verfFirstname}
+                        
                             onChange={(e) => setFirstName(e.target.value)}
                         />
                         <p className="error-message">{firstNameError}</p>
@@ -194,7 +157,7 @@ const Signup = () => {
                             id="lastName"
                             value={lastName}
                             data-test='input-nom'
-                            error={verfLastname}
+                          
                             onChange={(e) => setLastName(e.target.value)}
                         />
                         <p className="error-message">{lastNameError}</p>
@@ -208,7 +171,7 @@ const Signup = () => {
                             id="email"
                             value={email}
                             data-test="input-email"
-                            error={verfEmail}
+                            
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         <p className="error-message">{emailError}</p>
