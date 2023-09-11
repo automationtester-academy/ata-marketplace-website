@@ -58,7 +58,7 @@
     display: block;
     width: 50%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #00C2A2;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -82,6 +82,61 @@
   font-size: 16px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.box{
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.input-with-icon-div{
+  display: flex;
+}
+
+.custom-input{
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.icon-span {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.tracker-box{
+  background-color: #386489;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0.09em;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.tracker-box div{
+  margin: 5px 0;
+}
+
+.tracker-box .validated{
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.list-icon{
+  margin-right: 8px;
+}
+
+.list-icon.green{
+  color: #0f0;
 }
 
 

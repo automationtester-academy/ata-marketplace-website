@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import logoImg from '../images/ATA-logo.png';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { Link  } from 'react-router-dom';
+
+import Icon from 'react-icons-kit';
+import { basic_eye } from 'react-icons-kit/linea/basic_eye'
+import { basic_eye_closed } from 'react-icons-kit/linea/basic_eye_closed'
+import { arrows_exclamation } from 'react-icons-kit/linea/arrows_exclamation'
+import { arrows_circle_check } from 'react-icons-kit/linea/arrows_circle_check'
+
 import '../styles/Signup.css';
 
 const Signup = () => {
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -61,35 +69,67 @@ const Signup = () => {
         }
     };
 
+    const [type, setType] = useState('password');
 
-    const [isFocused, setIsFocused] = useState(false);
+    // validated states
+    const [lowerValidated, setLowerValidated] = useState(false);
+    const [upperValidated, setUpperValidated] = useState(false);
+    const [numberValidated, setNumberValidated] = useState(false);
+    const [specialValidated, setSpecialValidated] = useState(false);
+    const [lengthValidated, setLengthValidated] = useState(false);
 
-    const handleFocus = () => {
-        setIsFocused(true);
-    };
+    const handleChange = (value) => {
+        const lower = new RegExp('(?=.*[a-z])');
+        const upper = new RegExp('(?=.*[A-Z])');
+        const number = new RegExp('(?=.*[0-9])');
+        const special = new RegExp('(?=.*[!@#\$%\^&\*])');
+        const length = new RegExp('(?=.{8,})')
+        if (lower.test(value)) {
+            setLowerValidated(true);
+        }
+        else {
+            setLowerValidated(false);
+        }
+        if (upper.test(value)) {
+            setUpperValidated(true);
+        }
+        else {
+            setUpperValidated(false);
+        }
+        if (number.test(value)) {
+            setNumberValidated(true);
+        }
+        else {
+            setNumberValidated(false);
+        }
+        if (special.test(value)) {
+            setSpecialValidated(true);
+        }
+        else {
+            setSpecialValidated(false);
+        }
+        if (length.test(value)) {
+            setLengthValidated(true);
+        }
+        else {
+            setLengthValidated(false);
+        }
+    }
 
-    const handleBlur = () => {
-        setIsFocused(false);
-    };
 
-    const handleInputChange = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
-    };
-
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasNumber = /[0-9]/.test(password);
-    const isLengthValid = password.length >= 8;
 
     return (
         <div className="signup-containers">
+
             <div className="signup-container">
+
                 <div className="logo-section">
                     <img src={logoImg} alt="Logo" data-test='logo-img' />
                 </div>
+
                 <div className="form-section">
                     <h2 className='signup-title' data-test='text-créer-compte'> Créer Votre Compte</h2>
+
                     <div className="input-container">
                         <label className="labels-signup" htmlFor="firstName" data-test='prenom'>Prénom *</label>
                         <input
@@ -102,6 +142,7 @@ const Signup = () => {
                         />
                         <p className="error-message">{firstNameError}</p>
                     </div>
+
                     <div className="input-container">
                         <label className="labels-signup" htmlFor="lastName" data-test='nom'>Nom *</label>
                         <input
@@ -114,6 +155,7 @@ const Signup = () => {
                         />
                         <p className="error-message">{lastNameError}</p>
                     </div>
+
                     <div className="input-container">
                         <label className="labels-signup" htmlFor="email" data-test='email'>Email *</label>
                         <input
@@ -126,41 +168,108 @@ const Signup = () => {
                         />
                         <p className="error-message">{emailError}</p>
                     </div>
-                    <div className="input-container">
-                        <label className="labels-signup" htmlFor="password" data-test='mot-de-passe'>Mot de passe *</label>
-                        <input
-                            type="password"
-                            className='inputs-signup'
-                            id="password"
-                            value={password}
-                            data-test="input-password"
-                            onChange={(e) => {
-                                setPassword(e.target.value);
-                                handleInputChange()
-                            }}
 
-                            onFocus={handleFocus}
-                            onBlur={handleBlur}
-                           
-                        />
-                        <p className="error-message">{passwordError}</p>
-                        {isFocused && (
-                            <div className="message" id="message">
-                                <p className={`message-item ${hasLowerCase ? 'valid' : 'invalid'}`}>
-                                    At least one lowercase letter
-                                </p>
-                                <p className={`message-item ${hasUpperCase ? 'valid' : 'invalid'}`}>
-                                    At least one uppercase letter
-                                </p>
-                                <p className={`message-item ${hasNumber ? 'valid' : 'invalid'}`}>
-                                    At least one number
-                                </p>
-                                <p className={`message-item ${isLengthValid ? 'valid' : 'invalid'}`}>
-                                    Minimum 8 characters
-                                </p>
+                    <div className="input-container">
+                        <div className="wrapper">
+
+                            <div className="box">
+
+                                <label 
+                                className="labels-signup"
+                                data-test="label-mdp"
+                                >
+                                Entrer votre Mot de passe *
+                                </label>
+
+                                <div className='input-with-icon-div form-control'>
+                                    <input 
+                                    className='inputs-signup' 
+                                    type={type}
+                                    data-test="input-mdp"
+                                    onChange={(e) => {
+                                        handleChange(e.target.value);
+                                        setPassword(e.target.value)}} 
+                                    />
+                                    {type === "password" ? (
+                                        <span data-test="eye-icon-closed" className='icon-span' onClick={() => setType("text")}>
+                                            <Icon icon={basic_eye_closed} size={18} />
+                                        </span>
+                                    ) : (
+                                        <span data-test="eye-icon-open" className='icon-span' onClick={() => setType("password")}>
+                                            <Icon icon={basic_eye} size={18} />
+                                        </span>
+                                    )}
+                                </div>
+
+                                <p className="error-message">{passwordError}</p>
+
+                                <main className='tracker-box'>
+                                    <div className={lowerValidated ? 'validated' : 'not-validated'}>
+                                        {lowerValidated ? (
+                                            <span className='list-icon green'>
+                                                <Icon icon={arrows_circle_check} />
+                                            </span>
+                                        ) : (
+                                            <span className='list-icon'>
+                                                <Icon icon={arrows_exclamation} />
+                                            </span>
+                                        )}
+                                        At least one lowercase letter
+                                    </div>
+                                    <div className={upperValidated ? 'validated' : 'not-validated'}>
+                                        {upperValidated ? (
+                                            <span className='list-icon green'>
+                                                <Icon icon={arrows_circle_check} />
+                                            </span>
+                                        ) : (
+                                            <span className='list-icon'>
+                                                <Icon icon={arrows_exclamation} />
+                                            </span>
+                                        )}
+                                        At least one uppercase letter
+                                    </div>
+                                    <div className={numberValidated ? 'validated' : 'not-validated'}>
+                                        {numberValidated ? (
+                                            <span className='list-icon green'>
+                                                <Icon icon={arrows_circle_check} />
+                                            </span>
+                                        ) : (
+                                            <span className='list-icon'>
+                                                <Icon icon={arrows_exclamation} />
+                                            </span>
+                                        )}
+                                        At least one number
+                                    </div>
+                                    <div className={specialValidated ? 'validated' : 'not-validated'}>
+                                        {specialValidated ? (
+                                            <span className='list-icon green'>
+                                                <Icon icon={arrows_circle_check} />
+                                            </span>
+                                        ) : (
+                                            <span className='list-icon'>
+                                                <Icon icon={arrows_exclamation} />
+                                            </span>
+                                        )}
+                                        At least one special character
+                                    </div>
+                                    <div className={lengthValidated ? 'validated' : 'not-validated'}>
+                                        {lengthValidated ? (
+                                            <span className='list-icon green'>
+                                                <Icon icon={arrows_circle_check} />
+                                            </span>
+                                        ) : (
+                                            <span className='list-icon'>
+                                                <Icon icon={arrows_exclamation} />
+                                            </span>
+                                        )}
+                                        At least 8 characters
+                                    </div>
+                                </main>
                             </div>
-                        )}
+
+                        </div>
                     </div>
+
                     <div className="input-container">
                         <label className="labels-signup" htmlFor="confirmPassword" data-test='confirm-mdp'>Confirmation du mot de passe *</label>
                         <input
@@ -174,17 +283,18 @@ const Signup = () => {
                         <p className="error-message">{confirmPasswordError}</p>
                     </div>
 
-                    <div id="message">
-                        <h3>Password must contain the following:</h3>
-                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                        <p id="number" class="invalid">A <b>number</b></p>
-                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                    </div>
-
-                    <button className="signup-button" onClick={handleSignup} data-test="submit-signup" >S'inscrire</button>
+                    <Link to="/">
+                        <button 
+                        className="signup-button" 
+                        onClick={handleSignup} 
+                        data-test="submit-signup" >
+                        S'inscrire
+                        </button>
+                    </Link>
                 </div>
+
             </div>
+
         </div>
     );
 };
