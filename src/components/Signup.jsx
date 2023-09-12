@@ -1,4 +1,6 @@
-import React, { useState, useRef } from 'react';
+/* eslint-disable no-useless-escape */
+
+import React, { useState } from 'react';
 import logoImg from '../images/ATA-logo.png';
 import { useNavigate  } from 'react-router-dom';
 
