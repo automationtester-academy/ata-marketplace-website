@@ -10,8 +10,8 @@ const Header = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
 
   return (
-    <nav className="navigation">
-      <Link href="/home" className="brand-name">
+    <nav className="navigation" data-test="header">
+      <Link to="/home" className="brand-name">
         <img src={logoImg} alt="Logo" data-test="logo-img" />
       </Link>
       <button
@@ -50,7 +50,7 @@ const Header = () => {
             <Link to="/contact" data-test="connectez-list">Contactez Nous!</Link>
           </li>
           <li>
-            <ShoppingCartIcon />
+            <ShoppingCartIcon data-test="shopping-cart-icon"/>
           </li>
         </ul>
       </div>

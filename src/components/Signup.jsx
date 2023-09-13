@@ -25,43 +25,42 @@ const Signup = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
-
-
       
-
     const navigate = useNavigate();
 
-    const handleSignup = () => {
+    const handleSignup = (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+    
         // Reset previous error messages
         setFirstNameError('');
         setLastNameError('');
         setEmailError('');
         setPasswordError('');
         setConfirmPasswordError('');
-
+    
         // Validation logic
         let isValid = true;
-
+    
         if (firstName.trim() === '') {
             setFirstNameError("Le prénom ne peut pas être vide.");
             isValid = false;
         }
-
+    
         if (lastName.trim() === '') {
             setLastNameError("Le nom ne peut pas être vide.");
             isValid = false;
         }
-
+    
         if (email.trim() === '') {
             setEmailError("L'email ne peut pas être vide.");
             isValid = false;
         }
-
+    
         if (password.trim() === '') {
             setPasswordError("Le mot de passe ne peut pas être vide.");
             isValid = false;
         }
-
+    
         if (confirmPassword.trim() === '') {
             setConfirmPasswordError("La confirmation du mot de passe ne peut pas être vide.");
             isValid = false;
@@ -69,12 +68,13 @@ const Signup = () => {
             setConfirmPasswordError("Les mots de passe ne correspondent pas.");
             isValid = false;
         }
-
+    
         if (isValid) {
             // If all validations passed, perform signup process
             navigate('/home');
         }
     };
+    
 
     const [type, setType] = useState('password');
 
@@ -148,7 +148,7 @@ const Signup = () => {
                         
                             onChange={(e) => setFirstName(e.target.value)}
                         />
-                        <p className="error-message">{firstNameError}</p>
+                        <p className="error-message" data-test="error-message">{firstNameError}</p>
                     </div>
 
                     <div className="input-container">
@@ -159,10 +159,9 @@ const Signup = () => {
                             id="lastName"
                             value={lastName}
                             data-test='input-nom'
-                          
                             onChange={(e) => setLastName(e.target.value)}
                         />
-                        <p className="error-message">{lastNameError}</p>
+                        <p className="error-message" data-test="error-message">{lastNameError}</p>
                     </div>
 
                     <div className="input-container">
@@ -173,10 +172,9 @@ const Signup = () => {
                             id="email"
                             value={email}
                             data-test="input-email"
-                            
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <p className="error-message">{emailError}</p>
+                        <p className="error-message" data-test="error-message">{emailError}</p>
                     </div>
 
                     <div className="input-container">
@@ -211,16 +209,16 @@ const Signup = () => {
                                     )}
                                 </div>
 
-                                <p className="error-message">{passwordError}</p>
+                                <p className="error-message" data-test="error-message">{passwordError}</p>
 
                                 <main className='tracker-box'>
                                     <div className={lowerValidated ? 'validated' : 'not-validated'}>
                                         {lowerValidated ? (
-                                            <span className='list-icon green'>
+                                            <span className='list-icon green' data-test="cercle-checked">
                                                 <Icon icon={arrows_circle_check} />
                                             </span>
                                         ) : (
-                                            <span className='list-icon'>
+                                            <span className='list-icon' data-test="cercle-not-checked">
                                                 <Icon icon={arrows_exclamation} />
                                             </span>
                                         )}
@@ -228,11 +226,11 @@ const Signup = () => {
                                     </div>
                                     <div className={upperValidated ? 'validated' : 'not-validated'}>
                                         {upperValidated ? (
-                                            <span className='list-icon green'>
+                                            <span className='list-icon green' data-test="cercle-checked">
                                                 <Icon icon={arrows_circle_check} />
                                             </span>
                                         ) : (
-                                            <span className='list-icon'>
+                                            <span className='list-icon' data-test="cercle-not-checked">
                                                 <Icon icon={arrows_exclamation} />
                                             </span>
                                         )}
@@ -240,11 +238,11 @@ const Signup = () => {
                                     </div>
                                     <div className={numberValidated ? 'validated' : 'not-validated'}>
                                         {numberValidated ? (
-                                            <span className='list-icon green'>
+                                            <span className='list-icon green' data-test="cercle-checked">
                                                 <Icon icon={arrows_circle_check} />
                                             </span>
                                         ) : (
-                                            <span className='list-icon'>
+                                            <span className='list-icon' data-test="cercle-not-checked">
                                                 <Icon icon={arrows_exclamation} />
                                             </span>
                                         )}
@@ -252,11 +250,11 @@ const Signup = () => {
                                     </div>
                                     <div className={specialValidated ? 'validated' : 'not-validated'}>
                                         {specialValidated ? (
-                                            <span className='list-icon green'>
+                                            <span className='list-icon green' data-test="cercle-checked">
                                                 <Icon icon={arrows_circle_check} />
                                             </span>
                                         ) : (
-                                            <span className='list-icon'>
+                                            <span className='list-icon' data-test="cercle-not-checked">
                                                 <Icon icon={arrows_exclamation} />
                                             </span>
                                         )}
@@ -264,11 +262,11 @@ const Signup = () => {
                                     </div>
                                     <div className={lengthValidated ? 'validated' : 'not-validated'}>
                                         {lengthValidated ? (
-                                            <span className='list-icon green'>
+                                            <span className='list-icon green' data-test="cercle-checked">
                                                 <Icon icon={arrows_circle_check} />
                                             </span>
                                         ) : (
-                                            <span className='list-icon'>
+                                            <span className='list-icon' data-test="cercle-not-checked">
                                                 <Icon icon={arrows_exclamation} />
                                             </span>
                                         )}
@@ -287,10 +285,12 @@ const Signup = () => {
                             className='inputs-signup'
                             id="confirmPassword"
                             value={confirmPassword}
-                            data-cu="input-mdp-confirmation"
+                            data-test="input-mdp-confirmation"
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
-                        <p className="error-message">{confirmPasswordError}</p>
+
+                        <p className="error-message" data-test="error-message">{confirmPasswordError}</p>
+                        <p className="error-message" data-test="error-message">{passwordError}</p>
                     </div>
 
                   
