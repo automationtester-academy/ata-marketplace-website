@@ -8,8 +8,8 @@ describe('Home Page', () => {
   
     it('should display the header and footer', () => {
       // Check if the header and footer elements are visible
-      cy.get('header').should('be.visible');
-      cy.get('footer').should('be.visible');
+      cy.get('[data-test=header]').should('be.visible');
+      cy.get('[data-test=footer]').should('be.visible');
     });
   
     it('should display the products section', () => {
@@ -19,16 +19,16 @@ describe('Home Page', () => {
   
     it('should have a search input and button', () => {
       // Check if the search input and button are visible
-      cy.get('[data-cy=search-products]').should('be.visible');
-      cy.get('[data-cy=submit-search]').should('be.visible');
+      cy.get('[data-test=search-products]').should('be.visible');
+      cy.get('[data-test=submit-search]').should('be.visible');
     });
   
     it('should perform a search when the search button is clicked', () => {
       // Enter a search query in the search input
-      cy.get('[data-cy=search-products]').type('Product Name');
+      cy.get('[data-test=search-products]').type('Product Name');
   
       // Click the search button
-      cy.get('[data-cy=submit-search]').click();
+      cy.get('[data-test=submit-search]').click();
   
       // Add assertions for the search functionality
       // For example, you can check if search results are displayed on the page

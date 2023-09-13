@@ -26,14 +26,14 @@ describe('Action Area Card Component', () => {
           cy.get('.bottom-content p').should('be.visible');
   
           // Check if the card contains a "Consulter" button
-          cy.get('[data-cy=submit-see-deatails]').should('be.visible');
+          cy.get('[data-test=consulter-btn]').should('be.visible');
         });
       });
     });
   
     it('should open a product details page when "Consulter" is clicked', () => {
       // Click the "Consulter" button of the first card
-      cy.get('[data-cy=submit-see-deatails]').first().click();
+      cy.get('[data-test=consulter-btn]').first().click();
   
       // Add assertions for the product details page
       // For example, you can check if the product details are displayed correctly
