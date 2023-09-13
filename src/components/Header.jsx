@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <nav className="navigation">
-      <Link href="/home" className="brand-name">
+      <Link to="/home" className="brand-name">
         <img src={logoImg} alt="Logo" data-test="logo-img" />
       </Link>
       <button
