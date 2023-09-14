@@ -25,9 +25,7 @@ const Login = () => {
       setErrorGeneral("");
       setErrorPassword("");
       setErrorUsername("");
-      console.log('Username:', formData.username);
-      console.log('Password:', formData.password);
-      console.log(data);
+
       let authorized = false;
       data.forEach((user) => {
         if (user.username === formData.username && user.password === formData.password) {
@@ -52,7 +50,12 @@ const Login = () => {
 
                 <div className="login-actions">
                     <div className="logo">
-                        <img src={logoImg} alt="Logo" data-test="logo-img" />
+                        <img 
+                        src={logoImg} 
+                        alt="Logo" 
+                        data-test="logo-img"
+                        data-testid="logo-img-login"
+                        />
                     </div>
 
                     <form onSubmit={handleSubmit} className="form-container">
@@ -61,10 +64,12 @@ const Login = () => {
                             className="labels" 
                             htmlFor="username" 
                             data-test="nom-utilisateur"
+                            data-testid="nom-utilisateur"
                             >
                             Nom d'utilisateur
                             </label>
                             <input
+                                placeholder="Insérer votre Nom d'utilisateur"
                                 className="inputs"
                                 type="text"
                                 id="username"
@@ -79,9 +84,18 @@ const Login = () => {
 
                         </div>
                         <div className="input-container">
-                            <label className="labels" htmlFor="password" data-test="Mot-de-passe"
-                            >Mot de passe</label>
+
+                            <label 
+                            className="labels" 
+                            htmlFor="password" 
+                            data-test="Mot-de-passe"
+                            data-testid="Mot-de-passe"
+                            >
+                            Mot de passe
+                            </label>
+
                             <input
+                                placeholder='Insérer votre Mot de passe'
                                 className="inputs"
                                 data-test="password-login"
                                 type="password"
@@ -104,6 +118,7 @@ const Login = () => {
                             htmlFor="mdp-oublié" 
                             className='label-mdp-oublié' 
                             data-test='mdp-oublié'
+                            data-testid='mdp-oublié'
                             >
                             Mot de passe oublié ?
                             </Link>
@@ -120,13 +135,14 @@ const Login = () => {
                             <label 
                             htmlFor="remember" 
                             className='label-mdp-oublié' 
-                            data-test='mdp-oublié'
+                            data-test='remember-me'
+                            data-testid='remember-me'
                             >
                             Se souvenir de moi
                             </label>
                         </div>
 
-                        <button
+                        <button                         
                             type="submit"
                             className="login-button"
                             data-test="submit-login"
@@ -134,9 +150,17 @@ const Login = () => {
                             Se Connecter
                         </button>
                         
-                        <p className="sign-up-link" data-test='text-Inscrivez-vous'>
+                        <p 
+                        className="sign-up-link" 
+                        data-test='text-Inscrivez-vous'
+                        data-testid='text-Inscrivez-vous'
+                        >
                             Vous n'avez pas de compte ?
-                            <Link to="/signup" data-test='link-Inscrivez-vous'>
+                            <Link 
+                            to="/signup" 
+                            data-test='link-Inscrivez-vous'
+                            data-testid='link-Inscrivez-vous'
+                            >
                                     &nbsp;Inscrivez-vous !
                             </Link>
                         </p>
@@ -147,18 +171,26 @@ const Login = () => {
                     <hr className='hrs'></hr>
                     <div className='users-auth'>
                         <div className="all-usernames">
-                            <p className='user-title'>
-                                Les noms d'utilisateur acceptés sont les suivants :
+                            <p 
+                            className='user-title'
+                            data-testid='user-title'
+                            >
+                            Les noms d'utilisateur acceptés sont les suivants :
                             </p>
-                            <p>known_user</p>
-                            <p>login_user</p>
-                            <p>geek_user</p>
-                            <p>enter_user</p>
+                            <p data-testid='user-title1'>known_user</p>
+                            <p data-testid='user-title2'>login_user</p>
+                            <p data-testid='user-title3'>geek_user</p>
+                            <p data-testid='user-title4'>enter_user</p>
                         </div>
 
                         <div className="all-passwords">
-                            <p className='user-title'>Mot de passe pour tous les utilisateurs :</p>
-                            <p>cypress-geek</p>
+                            <p 
+                            className='user-title'
+                            data-testid='user-mdp-title'
+                            >
+                            Mot de passe pour tous les utilisateurs :
+                            </p>
+                            <p data-testid='user-mdp'>cypress-geek</p>
                         </div>
                     </div>
                 </div>

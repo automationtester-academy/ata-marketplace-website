@@ -31,7 +31,6 @@ const Signup = () => {
     const handleSignup = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
     
-        // Reset previous error messages
         setFirstNameError('');
         setLastNameError('');
         setEmailError('');
@@ -131,15 +130,28 @@ const Signup = () => {
             <div className="signup-container">
 
                 <div className="logo-section">
-                    <img src={logoImg} alt="Logo" data-test='logo-img' />
+                    <img 
+                    src={logoImg} 
+                    alt="Logo" 
+                    data-test='logo-img'
+                    data-testid='logo-img-signup'
+                    />
                 </div>
 
                 <form onSubmit={handleSignup} className="form-section">
                     <h2 className='signup-title' data-test='text-créer-compte'> Créer Votre Compte</h2>
 
                     <div className="input-container">
-                        <label className="labels-signup" htmlFor="firstName" data-test='prenom'>Prénom *</label>
+                        <label 
+                        className="labels-signup" 
+                        htmlFor="firstName" 
+                        data-test='prenom'
+                        data-testid='prenom'
+                        >Prénom *
+                        </label>
+
                         <input
+                        placeholder="Insérer votre Prénom"
                             className='inputs-signup'
                             type="text"
                             id="firstName"
@@ -152,8 +164,16 @@ const Signup = () => {
                     </div>
 
                     <div className="input-container">
-                        <label className="labels-signup" htmlFor="lastName" data-test='nom'>Nom *</label>
+                        <label 
+                        className="labels-signup" 
+                        htmlFor="lastName" 
+                        data-test='nom'
+                        data-testid='nom'
+                        >
+                        Nom *
+                        </label>
                         <input
+                        placeholder="Insérer votre Nom"
                             type="text"
                             className='inputs-signup'
                             id="lastName"
@@ -165,8 +185,16 @@ const Signup = () => {
                     </div>
 
                     <div className="input-container">
-                        <label className="labels-signup" htmlFor="email" data-test='email'>Email *</label>
+                        <label 
+                        className="labels-signup" 
+                        htmlFor="email" 
+                        data-test='email'
+                        data-testid='email'
+                        >
+                        Email *
+                        </label>
                         <input
+                        placeholder="Insérer votre Email"
                             type="email"
                             className='inputs-signup'
                             id="email"
@@ -185,12 +213,14 @@ const Signup = () => {
                                 <label 
                                 className="labels-signup"
                                 data-test="label-mdp"
+                                data-testid="label-mdp"
                                 >
                                 Entrer votre Mot de passe *
                                 </label>
 
                                 <div className='input-with-icon-div form-control'>
                                     <input 
+                                    placeholder="Insérer votre Mot de passe"
                                     className='inputs-signup' 
                                     type={type}
                                     data-test="input-mdp"
@@ -279,8 +309,16 @@ const Signup = () => {
                     </div>
 
                     <div className="input-container">
-                        <label className="labels-signup" htmlFor="confirmPassword" data-test='confirm-mdp'>Confirmation du mot de passe *</label>
+                        <label 
+                        className="labels-signup" 
+                        htmlFor="confirmPassword" 
+                        data-test='confirm-mdp'
+                        data-testid='confirm-mdp'
+                        >
+                        Confirmation du mot de passe *
+                        </label>
                         <input
+                        placeholder="Insérer votre confirmation de mot de passe"
                             type="password"
                             className='inputs-signup'
                             id="confirmPassword"

@@ -1,10 +1,10 @@
 module.exports = {
-  
-  "testEnvironment": "jsdom",
-
+  // ...other Jest configurations
   moduleNameMapper: {
-    "\\.(png|jpg|jpeg|gif)$": "<rootDir>/src/__mocks__/fileMock.js"
+    '\\.(css|less|scss)$': 'identity-obj-proxy',
+    '\\.(png|jpg|jpeg|gif|svg|ico)$': '<rootDir>/fileMock.js', // If you also have image imports
   },
 
-  // Other Jest configurations...
+  testEnvironment: 'jsdom',
+  
 };
