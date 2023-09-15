@@ -328,7 +328,6 @@ const Signup = () => {
                         />
 
                         <p className="error-message" data-test="error-message">{confirmPasswordError}</p>
-                        <p className="error-message" data-test="error-message">{passwordError}</p>
                     </div>
 
                   

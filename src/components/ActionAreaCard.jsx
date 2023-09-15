@@ -36,18 +36,19 @@ const ActionAreaCard = () => {
             </CardActionArea>
             <CardContent className="card-content">
               <Typography gutterBottom variant="h5" component="div" className="product-name">
-                <p data-test="title-product">{item.title}</p>
+                <p data-test="title-product" data-testid="title-product">{item.title}</p>
               </Typography>
               <Typography variant="body2" color="text.secondary" className="product-desc">
-                <p data-test="desc-product">{item.description}</p>
+                <p data-test="desc-product" data-testid="desc-product">{item.description}</p>
               </Typography>
               <div className="bottom-content">
-                <p data-test="price-product">{item.price}</p>
+                <p data-test="price-product" data-testid="price-product">{item.price}</p>
                 <Link to={`/details/${item.id}`}>
                   <Button 
                   variant="contained" 
                   className="consulter-button" 
                   data-test="consulter-btn"
+                  data-testid="consulter-btn"
                   >
                     <span className="span-name">Consulter</span>
                   </Button>

@@ -10,12 +10,18 @@ const Header = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
 
   return (
-    <nav className="navigation" data-test="header">
+    <nav className="navigation" data-test="header" data-testid="header">
       <Link to="/home" className="brand-name">
-        <img src={logoImg} alt="Logo" data-test="logo-img" />
+        <img 
+        src={logoImg} 
+        alt="Logo" 
+        data-test="logo-img"
+        data-testid="logo-img-header"
+        />
       </Link>
       <button
        data-test="hamburger-icon"
+       data-testid="hamburger-icon"
         className="hamburger"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);
@@ -50,7 +56,10 @@ const Header = () => {
             <Link to="/contact" data-test="connectez-list">Contactez Nous!</Link>
           </li>
           <li>
-            <ShoppingCartIcon data-test="shopping-cart-icon"/>
+            <ShoppingCartIcon 
+            data-test="shopping-cart-icon"
+            data-testid="shopping-cart-icon"
+            />
           </li>
         </ul>
       </div>

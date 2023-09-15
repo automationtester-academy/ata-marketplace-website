@@ -254,147 +254,101 @@ test('email input should change', () => {
     expect(passwordconfirmationInputEl.value).toBe(testValue);
   });
 
-//////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // test('First Name error message should be displayed', () => {
-//   const firstNameError = 'This is a first name error message';
-
 //   render(
 //     <MemoryRouter>
-//     <Signup
-//       firstNameError={firstNameError}
-//       lastNameError=""
-//       emailError=""
-//       passwordError=""
-//       confirmPasswordError=""
-//     />
+//       <Signup />
 //     </MemoryRouter>
 //   );
 
-//   const errorMessage = screen.getByText(firstNameError);
-//   expect(errorMessage).toBeInTheDocument();
+//   // Find the input field for the First Name
+//   const firstnameInputEl = screen.getByPlaceholderText("Insérer votre Prénom");
+
+//   // Trigger a form submission without filling in the First Name
+//   const signupButton = screen.getByText("S'inscrire");
+//   userEvent.click(signupButton);
+
+//   // Find and assert the error message for First Name
+//   const firstNameErrorMessage = screen.getByText("Le prénom ne peut pas être vide.");
+//   expect(firstNameErrorMessage).toBeInTheDocument();
 // });
 
 // test('Last Name error message should be displayed', () => {
-//   const lastNameError = 'This is a last name error message';
-
 //   render(
 //     <MemoryRouter>
-//     <Signup
-//       firstNameError=""
-//       lastNameError={lastNameError}
-//       emailError=""
-//       passwordError=""
-//       confirmPasswordError=""
-//     />
+//       <Signup />
 //     </MemoryRouter>
 //   );
 
-//   const errorMessage = screen.getByText(lastNameError);
-//   expect(errorMessage).toBeInTheDocument();
+//   // Find the input field for the Last Name
+//   const lastnameInputEl = screen.getByPlaceholderText("Insérer votre Nom");
+
+//   // Trigger a form submission without filling in the Last Name
+//   const signupButton = screen.getByText("S'inscrire");
+//   userEvent.click(signupButton);
+
+//   // Find and assert the error message for Last Name
+//   const lastNameErrorMessage = screen.getByText("Le nom ne peut pas être vide.");
+//   expect(lastNameErrorMessage).toBeInTheDocument();
 // });
 
 // test('Email error message should be displayed', () => {
-//   const emailError = 'This is an email error message';
-
 //   render(
 //     <MemoryRouter>
-//     <Signup
-//       firstNameError=""
-//       lastNameError=""
-//       emailError={emailError}
-//       passwordError=""
-//       confirmPasswordError=""
-//     />
+//       <Signup />
 //     </MemoryRouter>
 //   );
 
-//   const errorMessage = screen.getByText(emailError);
-//   expect(errorMessage).toBeInTheDocument();
+//   // Find the input field for Email
+//   const emailInputEl = screen.getByPlaceholderText("Insérer votre Email");
+
+//   // Trigger a form submission without filling in the Email
+//   const signupButton = screen.getByText("S'inscrire");
+//   userEvent.click(signupButton);
+
+//   // Find and assert the error message for Email
+//   const emailErrorMessage = screen.getByText("L'email ne peut pas être vide.");
+//   expect(emailErrorMessage).toBeInTheDocument();
 // });
 
 // test('Password error message should be displayed', () => {
-//   const passwordError = 'This is a password error message';
-
 //   render(
 //     <MemoryRouter>
-//     <Signup
-//       firstNameError=""
-//       lastNameError=""
-//       emailError=""
-//       passwordError={passwordError}
-//       confirmPasswordError=""
-//     />
+//       <Signup />
 //     </MemoryRouter>
 //   );
 
-//   const errorMessage = screen.getByText(passwordError);
-//   expect(errorMessage).toBeInTheDocument();
-// });
+//   // Find the input field for Password
+//   const passwordInputEl = screen.getByPlaceholderText("Insérer votre Mot de passe");
 
-// test('Password Confirmation error message should be displayed', () => {
-//     const confirmPasswordError = 'This is a confirmation password error message';
-  
-//     render(
-//         <MemoryRouter>
-//       <Signup
-//         firstNameError=""
-//         lastNameError=""
-//         emailError=""
-//         passwordError=""
-//         confirmPasswordError={confirmPasswordError}
-//       />
-//       </MemoryRouter>
-//     );
-  
-//     const errorMessage = screen.getByText(confirmPasswordError);
-//     expect(errorMessage).toBeInTheDocument();
-//   });
-  
-
-// test('Display error messages for empty fields', () => {
-//   render(
-//   <MemoryRouter>
-//     <Signup />
-//   </MemoryRouter>
-//   );
-
+//   // Trigger a form submission without filling in the Password
 //   const signupButton = screen.getByText("S'inscrire");
-//   userEvent.click(signupButton); // Submit the form without filling any fields
-
-//   const firstNameErrorMessage = screen.getByText("Le prénom ne peut pas être vide.");
-//   const lastNameErrorMessage = screen.getByText("Le nom ne peut pas être vide.");
-//   const emailErrorMessage = screen.getByText("L'email ne peut pas être vide.");
-//   const passwordErrorMessage = screen.getByText("Le mot de passe ne peut pas être vide.");
-//   const confirmPasswordErrorMessage = screen.getByText(
-//     "La confirmation du mot de passe ne peut pas être vide."
-//   );
-
-//   expect(firstNameErrorMessage).toBeInTheDocument();
-//   expect(lastNameErrorMessage).toBeInTheDocument();
-//   expect(emailErrorMessage).toBeInTheDocument();
-//   expect(passwordErrorMessage).toBeInTheDocument();
-//   expect(confirmPasswordErrorMessage).toBeInTheDocument();
-// });
-
-// test('Display error message for non-matching passwords', () => {
-//     render(
-//         <MemoryRouter>
-//           <Signup />
-//         </MemoryRouter>
-//         );
-
-//   const passwordInput = screen.getByPlaceholderText('Insérer votre Mot de passe');
-//   const confirmPasswordInput = screen.getByPlaceholderText('Insérer votre confirmation de mot de passe');
-//   const signupButton = screen.getByText("S'inscrire");
-
-//   // Fill in the form with data that should trigger a password mismatch error
-//   fireEvent.change(passwordInput, { target: { value: 'password123' } });
-//   fireEvent.change(confirmPasswordInput, { target: { value: 'differentpassword' } });
 //   userEvent.click(signupButton);
 
-//   const confirmPasswordErrorMessage = screen.getByText("Les mots de passe ne correspondent pas.");
+//   // Find and assert the error message for Password
+//   const passwordErrorMessage = screen.getByText("Le mot de passe ne peut pas être vide.");
+//   expect(passwordErrorMessage).toBeInTheDocument();
+// });
 
+
+// test('Confirm Password error message should be displayed', () => {
+//   render(
+//     <MemoryRouter>
+//       <Signup />
+//     </MemoryRouter>
+//   );
+
+//   // Find the input field for Confirm Password
+//   const confirmPasswordInputEl = screen.getByPlaceholderText("Insérer votre confirmation de mot de passe");
+
+//   // Trigger a form submission without filling in the Confirm Password
+//   const signupButton = screen.getByText("S'inscrire");
+//   userEvent.click(signupButton);
+
+//   // Find and assert the error message for Confirm Password
+//   const confirmPasswordErrorMessage = screen.getByText("La confirmation du mot de passe ne peut pas être vide.");
 //   expect(confirmPasswordErrorMessage).toBeInTheDocument();
 // });

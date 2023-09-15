@@ -12,7 +12,7 @@ const HomePage = () => {
       <Header />
       <div className="content">
         <div className="left">
-          <h1 data-test='title-products'>Products</h1>
+          <h1 data-test='title-products' data-testid='title-products'>Products</h1>
         </div>
         <div className="right">
           <div className="search-bar">
@@ -20,13 +20,15 @@ const HomePage = () => {
               className='search-input'
               type="text"
               placeholder="Rechercher ici"
-              data-test="search-products"
+              data-test="search-products" 
+              data-testid="search-products"
             />
             <button
               className='btn-search'
               data-test="input-search"
+              data-testid="input-search"
             >
-              <i className="fa fa-search" data-test='submit-search'></i>
+              <i className="fa fa-search" data-test='submit-search' data-testid='submit-search'></i>
             </button>
           </div>
         </div>
