@@ -1,65 +1,3 @@
-/* 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-
-  .logo-header {
-    max-width: 100px;
-  }
-  
-  .icon-shopping-cart {
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-
-  .fa-shopping-cart {
-    color: #333;
-  }
-
-  .fa-shopping-cart:hover {
-    color: #00C2A2;
-  }
-  
-
-.header-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .header-list li {
-    margin-right: 20px;
-    font-size: 18px; 
-    cursor: pointer;
-    font-weight: 600;
-  }
-
-  .header-list li:hover {
-    color: #00C2A2;
-  }
-
-  .cart-count {
-    background-color: red;
-    color: white;
-    font-weight: 700;
-    border-radius: 50%;
-    padding: 3px 3px;
-    font-size: 12px;
-    position: absolute;
-    top: 25px;
-    right: 13px;
-    transform: translate(50%, -50%);
-  } */
-
   .navigation {
     height: 60px;
     width: 100%;
@@ -122,6 +60,27 @@
       width: 80px;
       height: auto;
   }
+
+  .cart-icon-container {
+    position: relative;
+    display: block;
+  }
+  
+  .cart-icon {
+    font-size: 2rem; /* Adjust the size as needed */
+  }
+  
+  .cart-number {
+    position: relative;
+    top: -20px;
+    right: 0px;
+    background-color: red; /* Background color for the number badge */
+    color: white; /* Text color for the number badge */
+    border-radius: 50%; /* Make it a circle */
+    padding: 0px 4px; /* Adjust padding as needed */
+    font-size: 0.7rem; /* Adjust font size as needed */
+  }
+  
 
 
   @media screen and (max-width: 768px) {

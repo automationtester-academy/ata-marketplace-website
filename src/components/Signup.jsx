@@ -12,7 +12,11 @@ import { arrows_circle_check } from 'react-icons-kit/linea/arrows_circle_check'
 
 import '../styles/Signup.css';
 
+
 const Signup = () => {
+
+
+    const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -25,8 +29,17 @@ const Signup = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
+
+    
+    const [type, setType] = useState('password');
+
+    const [lowerValidated, setLowerValidated] = useState(false);
+    const [upperValidated, setUpperValidated] = useState(false);
+    const [numberValidated, setNumberValidated] = useState(false);
+    const [specialValidated, setSpecialValidated] = useState(false);
+    const [lengthValidated, setLengthValidated] = useState(false);
       
-    const navigate = useNavigate();
+   
 
     const handleSignup = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
@@ -75,15 +88,6 @@ const Signup = () => {
     };
     
 
-    const [type, setType] = useState('password');
-
-    // validated states
-    const [lowerValidated, setLowerValidated] = useState(false);
-    const [upperValidated, setUpperValidated] = useState(false);
-    const [numberValidated, setNumberValidated] = useState(false);
-    const [specialValidated, setSpecialValidated] = useState(false);
-    const [lengthValidated, setLengthValidated] = useState(false);
-
     const handleChange = (value) => {
         const lower = new RegExp('(?=.*[a-z])');
         const upper = new RegExp('(?=.*[A-Z])');
@@ -122,7 +126,7 @@ const Signup = () => {
         }
     }
 
-
+  
 
     return (
         <div className="signup-containers">
@@ -328,7 +332,6 @@ const Signup = () => {
                         />
 
                         <p className="error-message" data-test="error-message">{confirmPasswordError}</p>
-                        <p className="error-message" data-test="error-message">{passwordError}</p>
                     </div>
 
                   
