@@ -193,8 +193,8 @@ const ProductDetails = () => {
                             name="Add to cart"
                             className="panier-button"
                          
-                            >
-                            Ajouter au panier
+                        >
+                        Ajouter au panier
                         </button>
                         </div>
                     </div>
