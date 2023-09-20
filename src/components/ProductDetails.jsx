@@ -9,7 +9,6 @@ import Select from '@mui/material/Select';
 import '../styles/ProductDetails.css'
 import Header from './Header';
 import Footer from './Footer';
-import Cart from './Cart';
 
 const ProductDetails = () => {
     const { itemId } = useParams();
@@ -190,7 +189,13 @@ const ProductDetails = () => {
                             <p data-test="price-product" data-testid="price-product">{item.price}</p>
                         </div>
                         <div>
-                            <Cart />
+                        <button
+                            name="Add to cart"
+                            className="panier-button"
+                         
+                            >
+                            Ajouter au panier
+                        </button>
                         </div>
                     </div>
                 </div>
