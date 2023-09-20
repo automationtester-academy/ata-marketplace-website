@@ -55,11 +55,13 @@ const Header = () => {
           <li>
             <Link to="/contact" data-test="connectez-list">Contactez Nous!</Link>
           </li>
-          <li>
+          <li className="cart-icon-container">
             <ShoppingCartIcon 
             data-test="shopping-cart-icon"
             data-testid="shopping-cart-icon"
+            className='cart-icon'
             />
+             <span className="cart-number">0</span>
           </li>
         </ul>
       </div>

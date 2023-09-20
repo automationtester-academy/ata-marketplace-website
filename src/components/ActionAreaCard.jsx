@@ -20,6 +20,8 @@ const ActionAreaCard = () => {
     });
   }, []);
 
+
+
   return (
     <div className="homepage-cards">
       <div className="grid-container">

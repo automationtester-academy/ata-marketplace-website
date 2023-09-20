@@ -4,7 +4,8 @@ import logoImg from '../images/ATA-logo.png';
 import '../styles/Login.css';
 import UserData from '../components/userData.json';
 
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
+
     const [formData, setFormData] = useState({
       username: '',
       password: '',
@@ -34,6 +35,7 @@ const Login = () => {
       });
   
       if (authorized) {
+        setLoggedIn(true);
         navigate('/home');
       } else if (formData.username === ""){
         setErrorUsername("Veuillez renseigner votre nom d'utilisateur");

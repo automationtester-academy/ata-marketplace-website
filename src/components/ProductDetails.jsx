@@ -1,21 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchItems } from './MockDatas/mockData';
-
-import InputLabel from '@mui/material/InputLabel';
+import { useTheme } from '@mui/material/styles';
+import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-
+import Select from '@mui/material/Select';
 import '../styles/ProductDetails.css'
 import Header from './Header';
+import Footer from './Footer';
+import Cart from './Cart';
 
 const ProductDetails = () => {
     const { itemId } = useParams();
     const [item, setItem] = useState(null);
 
-    const [size, setSize] = useState('');
-    const [couleur, setCouleur] = useState('');
+    const ITEM_HEIGHT = 48;
+    const ITEM_PADDING_TOP = 8;
+    const MenuProps = {
+        PaperProps: {
+            style: {
+                maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+                width: 250,
+            },
+        },
+    };
+
+    const tailles = [
+        'XS',
+        'S',
+        'M',
+        'L',
+        'XL',
+        'XXL',
+        'XXXL',
+    ];
+
+    const colors = [
+        'Red',
+        'Black',
+        'White',
+        'Yellow',
+        'Green',
+        'Grey',
+        'Orange',
+    ];
+
+    const theme = useTheme();
+    const [theSize, settheSize] = React.useState([]);
+    const [theColor, settheColor] = React.useState([]);
 
     useEffect(() => {
         const fetchItemDetails = async () => {
@@ -35,100 +68,134 @@ const ProductDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const handleChangeSize = (event: SelectChangeEvent) => {
-        setSize(event.target.value);
+    function getStylesSize(taille, theSize, theme) {
+        return {
+            fontWeight:
+                theSize.indexOf(taille) === -1
+                    ? theme.typography.fontWeightRegular
+                    : theme.typography.fontWeightMedium,
+        };
+    }
+
+    const handleChangeSize = (event) => {
+        const {
+            target: { value },
+        } = event;
+        settheSize(
+            // On autofill we get a stringified value.
+            typeof value === 'string' ? value.split(',') : value,
+        );
     };
 
-    const handleChangeColor = (event: SelectChangeEvent) => {
-        setCouleur(event.target.value);
+    function getStylesColor(color, theColor, theme) {
+        return {
+            fontWeight:
+                theColor.indexOf(color) === -1
+                    ? theme.typography.fontWeightRegular
+                    : theme.typography.fontWeightMedium,
+        };
+    }
+
+    const handleChangeColor = (event) => {
+        const {
+            target: { value },
+        } = event;
+        settheColor(
+            // On autofill we get a stringified value.
+            typeof value === 'string' ? value.split(',') : value,
+        );
     };
 
     return (
         <>
             <Header />
-
             <div className="item-details-container">
-                <img src={item.imageUrl} alt="Product" data-test="image-product" />
-
+                <img
+                    src={item.imageUrl}
+                    alt="Product"
+                    data-test="image-product"
+                    data-testid="image-product"
+                />
                 <div className='details-container'>
-
                     <div className='details'>
                         <h2 data-test="title-product" data-testid="title-product">{item.title}</h2>
                         <p data-test="desc-product" data-testid="desc-product">{item.description}</p>
                     </div>
-
                     <div>
-                        <FormControl sx={{ m: 1, minWidth: 300 }}>
-                            <InputLabel id="demo-simple-select-autowidth-label">Taille *</InputLabel>
+                        <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
                             <Select
-                                labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"
-                                value={size}
+                                multiple
+                                displayEmpty
+                                value={theSize}
                                 onChange={handleChangeSize}
-                                autoWidth
-                                label="Taille"
+                                input={<OutlinedInput />}
+                                renderValue={(selected) => {
+                                    if (selected.length === 0) {
+                                        return <em>Taille *</em>;
+                                    }
+                                    return selected.join(', ');
+                                }}
+                                MenuProps={MenuProps}
+                                inputProps={{ 'aria-label': 'Without label' }}
                             >
-                                <MenuItem value="">
-                                    <em>42</em>
+                                <MenuItem disabled value="">
+                                    <em>Taille</em>
                                 </MenuItem>
-                                <MenuItem value={10}>35</MenuItem>
-                                <MenuItem value={10}>36</MenuItem>
-                                <MenuItem value={10}>37</MenuItem>
-                                <MenuItem value={10}>38</MenuItem>
-                                <MenuItem value={21}>39</MenuItem>
-                                <MenuItem value={22}>40</MenuItem>
-                                <MenuItem value={22}>41</MenuItem>
-                                <MenuItem value={22}>42</MenuItem>
-                                <MenuItem value={22}>43</MenuItem>
+                                {tailles.map((taille) => (
+                                    <MenuItem
+                                        key={taille}
+                                        value={taille}
+                                        style={getStylesSize(taille, theSize, theme)}
+                                    >
+                                        {taille}
+                                    </MenuItem>
+                                ))}
                             </Select>
                         </FormControl>
                     </div>
-
                     <div>
-                        <FormControl sx={{ m: 1, minWidth: 300 }}>
-                            <InputLabel id="demo-simple-select-autowidth-label">Couleur *</InputLabel>
+                        <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
                             <Select
-                                labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"
-                                value={couleur}
+                                multiple
+                                displayEmpty
+                                value={theColor}
                                 onChange={handleChangeColor}
-                                autoWidth
-                                label="Couleur"
+                                input={<OutlinedInput />}
+                                renderValue={(selected) => {
+                                    if (selected.length === 0) {
+                                        return <em>Couleur *</em>;
+                                    }
+                                    return selected.join(', ');
+                                }}
+                                MenuProps={MenuProps}
+                                inputProps={{ 'aria-label': 'Without label' }}
                             >
-                                <MenuItem value="">
-                                    <em>Rouge</em>
+                                <MenuItem disabled value="">
+                                    <em>Couleur</em>
                                 </MenuItem>
-                                <MenuItem value={10}>Noir</MenuItem>
-                                <MenuItem value={10}>Rouge</MenuItem>
-                                <MenuItem value={10}>Blanc</MenuItem>
-                                <MenuItem value={10}>Gris</MenuItem>
-                                <MenuItem value={21}>Vert</MenuItem>
-                                <MenuItem value={22}>Bleu</MenuItem>
-                                <MenuItem value={22}>Jaune</MenuItem>
-                                <MenuItem value={22}>Orange</MenuItem>
-                           
+                                {colors.map((color) => (
+                                    <MenuItem
+                                        key={color}
+                                        value={color}
+                                        style={getStylesColor(color, theColor, theme)}
+                                    >
+                                        {color}
+                                    </MenuItem>
+                                ))}
                             </Select>
                         </FormControl>
                     </div>
-
                     <div className='panier-section'>
                         <div>
                             <p data-test="price-product" data-testid="price-product">{item.price}</p>
                         </div>
-
                         <div>
-                        <button                         
-                            type="submit"
-                            className="panier-button"
-                            data-test="submit-login"
-                        >
-                            Ajouter au panier
-                        </button>
+                            <Cart />
                         </div>
-                        
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 };

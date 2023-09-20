@@ -6,7 +6,9 @@ import ActionAreaCard from './ActionAreaCard';
 
 import '../styles/HomePage.css';
 
+
 const HomePage = () => {
+
   return (
     <div className="home-container">
       <Header />
