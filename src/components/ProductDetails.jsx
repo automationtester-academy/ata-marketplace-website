@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchItems } from './MockDatas/mockData';
+import { fetchItems } from './MockDatas/products';
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,9 +10,19 @@ import '../styles/ProductDetails.css'
 import Header from './Header';
 import Footer from './Footer';
 
+import { useDispatch } from 'react-redux';
+
 const ProductDetails = () => {
+
+    const [value, setValue] = useState(1);
+
     const { itemId } = useParams();
     const [item, setItem] = useState(null);
+
+    const dispatch = useDispatch();
+    const addProduct = (item) => {
+        dispatch(addProduct(item));
+    }
 
     const ITEM_HEIGHT = 48;
     const ITEM_PADDING_TOP = 8;
@@ -105,6 +115,24 @@ const ProductDetails = () => {
         );
     };
 
+    const handleIncrement = () => {
+        setValue(value + 1);
+    };
+
+    const handleDecrement = () => {
+        if (value > 1) {
+            setValue(value - 1);
+        }
+    };
+
+    const handleChangeNumber = (event) => {
+        const inputValue = event.target.value;
+        // Ensure that the input value is a positive integer greater than or equal to 1
+        if (/^[1-9]\d*$/.test(inputValue)) {
+            setValue(parseInt(inputValue, 10));
+        }
+    };
+
     return (
         <>
             <Header />
@@ -184,18 +212,30 @@ const ProductDetails = () => {
                             </Select>
                         </FormControl>
                     </div>
+
+                    <div className="number-input-container">
+                        <span className='qtt-span'>Quantité * :</span>
+                        <button onClick={handleDecrement} className='operator'>-</button>
+                        <input
+                            className="centered-input"
+                            type="text"
+                            value={value}
+                            onChange={handleChangeNumber}
+                        />
+                        <button onClick={handleIncrement} className='operator'>+</button>
+                    </div>
                     <div className='panier-section'>
                         <div>
                             <p data-test="price-product" data-testid="price-product">{item.price}</p>
                         </div>
                         <div>
-                        <button
-                            name="Add to cart"
-                            className="panier-button"
-                         
-                        >
-                        Ajouter au panier
-                        </button>
+                            <button
+                                name="Add to cart"
+                                className="panier-button"
+                                onClick={() => addProduct(item)}
+                            >
+                                Ajouter au panier
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -206,3 +246,4 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
+

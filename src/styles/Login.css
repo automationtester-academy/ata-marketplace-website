@@ -2,10 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-
 }
 
 .login-section {
@@ -13,19 +9,23 @@
   background-color: #fff;
   padding: 70px;
   border-radius: 8px;
+  margin: 90px auto;
+  /* background-image: url('https://images.pexels.com/photos/2964779/pexels-photo-2964779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); */
 }
 
 
 .users-auth{
   display: flex;
   flex-direction:row;
-  gap: 40px;
+  justify-content: center;
   margin-top: 10px;
+  gap: 60px;
 } 
 
 .hrs{
 margin-top: 50px;
 }
+
 .user-title{
   font-weight: 700;
 }
@@ -48,22 +48,26 @@ margin-top: 50px;
   margin-right: 30px;
 }
 
-
-.labels {
+.login-labels {
   display: block;
   font-weight: bold;
-  margin-top: 10px ;
+  margin-top: 20px ;
   margin-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.inputs {
+.login-inputs {
   width: 100%;
   padding: 10px 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   line-height: 25px; 
+  background-color: #ECF9FC;
+}
+
+.login-inputs::placeholder {
+  padding-left: 10px;
 }
 
 
@@ -71,12 +75,12 @@ margin-top: 50px;
   display: block;
   width: 50%;
   padding: 10px;
-  background-color: #00C2A2;
+  background-color: #00AEEF;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0 auto; /* Center the button horizontally */
+  margin: 0 auto;
 }
 
 .psswd-forgotten {
@@ -84,13 +88,28 @@ margin-top: 50px;
   margin-top: 20px;
 }
 
+.mdp-oubli{
+  color: #00AEEF;
+}
+
+.label-mdp-oublié{
+  text-decoration: none;
+
+}
+
 .checkbox-remember{
   margin-bottom: 20px;
   margin-top: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .checkbox-input {
   margin-right: 20px;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
 }
 
 .sign-up-link {
@@ -100,16 +119,12 @@ margin-top: 50px;
 }
 
 .sign-up-link a {
-  color: #00C2A2;
+  color: #00AEEF;
   text-decoration: none;
 }
 
 .error-message {
   color: red;
-}
-
-.all-usernames p{
-  margin-left: 30px;
 }
 
   /* Small devices (up to 576px) */
@@ -123,6 +138,10 @@ margin-top: 50px;
       flex-direction:column;
       gap: 0;
     } 
+
+    .login-section {
+      margin: 20px auto;
+    }
   }
 
   /* Medium devices (577px to 768px) */
@@ -136,9 +155,11 @@ margin-top: 50px;
       flex-direction:column;
       gap: 0;
     } 
+
+    .login-section {
+      margin: 30px auto;
+    }
   }
-
-
 
 /* Medium Devices (Tablets and Smaller Laptops) */
 @media (min-width: 769px) and (max-width: 992px) {
@@ -157,7 +178,6 @@ margin-top: 50px;
   }
 
   .login-container {
-    height: 100vh;
     padding-left: 50px;
     padding-right: 50px;
   }
@@ -165,7 +185,7 @@ margin-top: 50px;
   .login-section {
     width: 100%;
     max-width: 500px;
-    margin: 20% auto;
+    margin: 40px auto;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -202,10 +222,11 @@ margin-top: 50px;
     font-size: 18px;
   }
 
+  .login-section {
+    margin: 40px auto;
+  }
 
 }
-
-
 
 /* Extra Large Devices (Large Desktops) */
 @media (min-width: 1201px) and (max-width: 1900px) {
@@ -226,7 +247,7 @@ margin-top: 50px;
   .login-section {
     width: 100%;
     max-width: 500px;
-    margin: 1% auto;
+    margin: 50px auto;
     padding-left: 0px;
     padding-right: 0px;
   }

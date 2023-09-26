@@ -1,43 +1,35 @@
 /* HomePage.css */
-
-/* Style for the main container */
 .home-container {
     margin: 0 auto;
   }
   
-  /* Style for the content */
   .content {
     display: flex;
     align-items: center;
   }
   
-  /* Style for the left side (title) */
   .left {
     flex: 1;
   }
   
-  /* Style for the title */
   .left h1 {
     font-size: 24px;
     color: #333;
     margin-left: 40px;
   }
-  
-  /* Style for the right side (search bar) */
+
   .right {
     flex: 1;
     display: flex;
     justify-content: flex-end;
   }
-  
-  /* Style for the search bar */
+
   .search-bar {
     display: flex;
     align-items: center;
     margin-right: 40px;
   }
   
-  /* Style for the search input */
   .search-input {
     padding: 10px;
     border: 1px solid #ccc;
@@ -46,7 +38,6 @@
     font-size: 16px;
   }
   
-  /* Style for the search button */
   .btn-search {
     background-color: #333;
     color: #fff;
@@ -56,7 +47,6 @@
     cursor: pointer;
   }
 
-  /* Style for the search icon */
   .fa-search {
     font-size: 18px;
   }

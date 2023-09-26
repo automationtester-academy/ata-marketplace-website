@@ -63,7 +63,7 @@ const Login = ({ setLoggedIn }) => {
                     <form onSubmit={handleSubmit} className="form-container">
                         <div className="input-container">
                             <label 
-                            className="labels" 
+                            className="login-labels" 
                             htmlFor="username" 
                             data-test="nom-utilisateur"
                             data-testid="nom-utilisateur"
@@ -72,7 +72,7 @@ const Login = ({ setLoggedIn }) => {
                             </label>
                             <input
                                 placeholder="Insérer votre Nom d'utilisateur"
-                                className="inputs"
+                                className="login-inputs"
                                 type="text"
                                 id="username"
                                 ref={usernameRef}
@@ -88,7 +88,7 @@ const Login = ({ setLoggedIn }) => {
                         <div className="input-container">
 
                             <label 
-                            className="labels" 
+                            className="login-labels" 
                             htmlFor="password" 
                             data-test="Mot-de-passe"
                             data-testid="Mot-de-passe"
@@ -98,7 +98,7 @@ const Login = ({ setLoggedIn }) => {
 
                             <input
                                 placeholder='Insérer votre Mot de passe'
-                                className="inputs"
+                                className="login-inputs"
                                 data-test="password-login"
                                 type="password"
                                 id="password"
@@ -122,7 +122,7 @@ const Login = ({ setLoggedIn }) => {
                             data-test='mdp-oublié'
                             data-testid='mdp-oublié'
                             >
-                            Mot de passe oublié ?
+                            <span className='mdp-oubli'>Mot de passe oublié ?</span>
                             </Link>
                         </div>
 
@@ -136,7 +136,7 @@ const Login = ({ setLoggedIn }) => {
 
                             <label 
                             htmlFor="remember" 
-                            className='label-mdp-oublié' 
+                            className='remember-me' 
                             data-test='remember-me'
                             data-testid='remember-me'
                             >
@@ -177,7 +177,7 @@ const Login = ({ setLoggedIn }) => {
                             className='user-title'
                             data-testid='user-title'
                             >
-                            Les noms d'utilisateur acceptés sont les suivants :
+                            Les noms des utilisateurs:
                             </p>
                             <p data-testid='user-title1'>known_user</p>
                             <p data-testid='user-title2'>login_user</p>
@@ -190,7 +190,7 @@ const Login = ({ setLoggedIn }) => {
                             className='user-title'
                             data-testid='user-mdp-title'
                             >
-                            Mot de passe pour tous les utilisateurs :
+                            Mot de passe:
                             </p>
                             <p data-testid='user-mdp'>cypress-geek</p>
                         </div>

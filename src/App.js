@@ -5,6 +5,8 @@ import HomePage from './components/HomePage';
 import Signup from './components/Signup';
 import ProductDetails from './components/ProductDetails';
 
+import './App.css'
+
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 

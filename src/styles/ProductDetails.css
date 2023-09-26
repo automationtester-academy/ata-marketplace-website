@@ -1,9 +1,9 @@
 .item-details-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust column size as needed */
-  gap: 20px; /* Adjust the gap between grid items as needed */
-  max-width: 900px; /* Adjust the maximum width as needed */
-  margin-top: 90px ; /* Center horizontally */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin-top: 90px ;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0;
@@ -15,7 +15,7 @@
 
   
   .item-details-container img {
-    max-width:100%; /* Adjust the image width as needed */
+    max-width:100%;
     height: auto;
     border-radius: 5px 5px 0 0;
   }
@@ -52,7 +52,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 0 auto; /* Center the button horizontally */
+    margin: 0 auto;
   }
 
   .panier-section{
@@ -67,6 +67,31 @@
     font-size: 18px;
     font-weight: 700;
   }
+
+.number-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.centered-input {
+  text-align: center;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.qtt-span{
+  margin-right: 50px;
+}
+
+.operator{
+  cursor: pointer;
+}
 
   @media (max-width: 576px) {
 

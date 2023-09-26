@@ -13,7 +13,7 @@ export default function Footer() {
     data-testid="footer"
       component="footer"
       sx={{
-        backgroundColor: "#E7F9F6",
+        backgroundColor: "#ECF9FC;",
         mt: 15,
         pb: 5,
       }}
@@ -36,10 +36,10 @@ export default function Footer() {
             14 Rue Beffroy, 92200 Neuilly-sur-Seine
             </Typography>
             <Typography variant="body2" color="text.secondary" data-test="p-email" data-testid="p-email">
-              Email: training@automationtesteracademy.com
+              Email: <a href="mailto:training@automationtesteracademy.com">training@automationtesteracademy.com</a>
             </Typography>
             <Typography variant="body2" color="text.secondary" data-test="p-tele" data-testid="p-tele">
-              Phone: +33 7 57 82 27 08
+              Phone: <a href="tel:+33757822708" className='tele' style={{color : 'rgb(0 0 0 / 60%)'}}>+33 7 57 82 27 08</a>
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>

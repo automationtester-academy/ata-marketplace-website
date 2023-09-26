@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
-import ActionAreaCard from './ActionAreaCard';
+import ProductListItem from './ProductListItem';
 
 import '../styles/HomePage.css';
 
@@ -37,7 +37,7 @@ const HomePage = () => {
       </div>
 
       <div>
-        <ActionAreaCard />
+        <ProductListItem />
       </div>
 
       <Footer />

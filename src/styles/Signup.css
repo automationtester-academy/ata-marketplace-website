@@ -1,6 +1,3 @@
-/* Signup.css */
-
-
 .signup-container {
   max-width: 500px;
   margin-left: auto;
@@ -13,7 +10,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
 }
-
 
 .form-section{
   margin-left: 50px;
@@ -39,7 +35,6 @@
     padding-bottom: 50px;
   }
 
-
 .labels-signup {
     display: block;
     font-weight: bold;
@@ -49,16 +44,17 @@
 .inputs-signup {
     width: 100%;
     border: 1px solid #ccc;
+    padding: 10px 5px;
     border-radius: 5px;
-    padding-bottom: 10px;
-    padding-top: 5px;
+    line-height: 25px; 
+    background-color: #ECF9FC;
 }
 
 .signup-button {
     display: block;
     width: 50%;
     padding: 10px;
-    background-color: #00C2A2;
+    background-color: #00AEEF;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -100,7 +96,14 @@
 
 .input-with-icon-div{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.inputs-signup::placeholder {
+  padding-left: 10px;
+}
+
 
 .custom-input{
   width: 100%;

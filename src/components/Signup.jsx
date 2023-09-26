@@ -219,12 +219,12 @@ const Signup = () => {
                                 data-test="label-mdp"
                                 data-testid="label-mdp"
                                 >
-                                Entrer votre Mot de passe *
+                                Insérer votre Mot de passe *
                                 </label>
 
                                 <div className='input-with-icon-div form-control'>
                                     <input 
-                                    placeholder="Insérer votre Mot de passe"
+                                    placeholder="Mot de passe"
                                     className='inputs-signup' 
                                     type={type}
                                     data-test="input-mdp"
@@ -322,7 +322,7 @@ const Signup = () => {
                         Confirmation du mot de passe *
                         </label>
                         <input
-                        placeholder="Insérer votre confirmation de mot de passe"
+                            placeholder="Mot de passe"
                             type="password"
                             className='inputs-signup'
                             id="confirmPassword"
