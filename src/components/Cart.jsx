@@ -1,16 +1,17 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import {delItem} from '../redux/actions/index'
+import {delCart} from '../redux/actions/index'
 import { NavLink } from 'react-router-dom'
 
 
 const Cart = () => {
-    const state = useSelector((state)=> state.addItem)
+
+    const state = useSelector((state)=> state.addCart)
     const dispatch = useDispatch()
 
-    const handleClose = (item) => {
-        dispatch(delItem(item))
+    const handleClose = (product) => {
+        dispatch(delCart(product))
     }
 
     const cartItems = (cartItem) => {
@@ -32,35 +33,8 @@ const Cart = () => {
         );
     }
 
-    const emptyCart = () => {
-        return (
-            <div className="container-p-vide">
-                <div className="section-p-vide">
-                    <div className="headline-p-vide">
-                        <h3>Votre panier est vide</h3>
-                    </div>
-                    </div>
-                </div>
-        );
-    }
-
-    const button = () => {
-        return(
-            <div className="container-checkout">
-                <div className="section-checkout">
-                    <NavLink to="/checkout" className="btn-checkout">Procéder au paiement</NavLink>
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <>
-            {state.length === 0 && emptyCart()}
-            {state.length !== 0 && state.map(cartItems)}
-            {state.length !== 0 && button()}
-        </>
-    )
 }
 
-export default Cart
+export default Cart;
+
+  

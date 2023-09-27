@@ -36,15 +36,20 @@ export default function Footer() {
             14 Rue Beffroy, 92200 Neuilly-sur-Seine
             </Typography>
             <Typography variant="body2" color="text.secondary" data-test="p-email" data-testid="p-email">
-              Email: <a href="mailto:training@automationtesteracademy.com">training@automationtesteracademy.com</a>
+              Email:&nbsp; 
+              <a 
+              href="mailto:training@automationtesteracademy.com"
+              style={{ color: 'rgb(0 0 0 / 60%)', textDecoration: 'none' }}
+              >
+                training@automationtesteracademy.com</a>
             </Typography>
             <Typography variant="body2" color="text.secondary" data-test="p-tele" data-testid="p-tele">
-              Phone: <a href="tel:+33757822708" className='tele' style={{color : 'rgb(0 0 0 / 60%)'}}>+33 7 57 82 27 08</a>
+              Téléphone: <a href="tel:+33757822708" className='tele' style={{color : 'rgb(0 0 0 / 60%)'}}>+33 7 57 82 27 08</a>
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" color="text.primary" gutterBottom data-test="p-media" data-testid="p-media">
-              Follow Us
+              Suivez-nous
             </Typography>
             <Link href="https://www.linkedin.com/company/ata-testing/" color="inherit" data-test="p-linkedin" data-testid="p-linkedin">
               <LinkedIn />

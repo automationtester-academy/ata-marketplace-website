@@ -1,6 +1,7 @@
 const addItem = [];
 
 const addItems = (state = addItem, action) => {
+    console.log("3", ...state, "4" , action.payload)
     switch (action.type) {
         case "ADDITEM" : return [
             ...state,

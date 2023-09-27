@@ -20,6 +20,9 @@
     border-radius: 5px 5px 0 0;
   }
   
+  .pic-detail{
+    border-radius: 5px 0 0 5px !important;
+  }
 
   
   .item-details-container h2 {
@@ -43,7 +46,35 @@
     flex-direction: column;
   }
 
+  
+  .panier-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 50px;
+  }
+
+  .btn-panier{
+    display: flex;
+    gap: 10px;
+  }
+
   .panier-button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background-color: #00C2A2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 12px auto;
+    font-size: 12px;
+  }
+
+  .voir-p-button{
     display: block;
     width: 100%;
     padding: 10px;
@@ -52,16 +83,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 0 auto;
+    margin: 12px auto;
+    font-size: 12px;
   }
 
-  .panier-section{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 190px;
-    margin-top: 50px;
-  }
 
   .panier-section p{
     font-size: 18px;

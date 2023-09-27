@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import ProductDetails from './components/ProductDetails';
 
 import './App.css'
+import Cart from 'components/Cart';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -16,18 +17,12 @@ const App = () => {
         <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path="/signup" element={<Signup />} />
 
-        <Route
-          path="/"
-          element={
-            loggedIn ? (
-              <Outlet />
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
-        >
+        <Route path="/" element={ loggedIn ? ( <Outlet />) : (<Navigate to="/login" replace />)}>
+
           <Route path="/home" element={<HomePage />} />
           <Route path="/details/:itemId" element={<ProductDetails />} />
+          <Route path="/Cart" element={<Cart />} />
+          
         </Route>
       </Routes>
     </Router>

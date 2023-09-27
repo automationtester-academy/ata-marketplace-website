@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import logoImg from '../images/ATA-logo.png';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import { Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import '../styles/Header.css';
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
+
+  const state = useSelector((state) => state.addItems)
 
   const [isNavExpanded, setIsNavExpanded] = useState(false)
 
@@ -15,7 +18,7 @@ const Header = () => {
     <>
       <div className='info-nav'>
         <div className='left-nav'>
-        <a href="tel:+33757822708" className='tele'>+33 7 57 82 27 08</a>
+        <a href="tel:+33757822708" className='tele'>Appelez Nous: +33 7 57 82 27 08</a>
         </div>
         <div className='right-nav'>
           <div>
@@ -79,20 +82,23 @@ const Header = () => {
         >
           <ul>
             <li>
-              <Link to="/home" data-test="home-list">Home</Link>
+              <Link to={`/home`} data-test="home-list">Home</Link>
             </li>
             <li>
-              <Link to="/about" data-test="apropos-list">A Propos</Link>
+              <Link to={`/about`} data-test="apropos-list">A Propos</Link>
             </li>
             <li>
-              <Link to="/contact" data-test="connectez-list">Contactez Nous!</Link>
+              <Link to={`/contact`} data-test="connectez-list">Contactez Nous!</Link>
             </li>
             <li className="cart-icon-container">
+              <Link to={`/Cart`}>
               <ShoppingCartIcon
                 data-test="shopping-cart-icon"
                 data-testid="shopping-cart-icon"
                 className='cart-icon'
               />
+               <span className="cart-number">{state.length}</span>
+               </Link>
             </li>
           </ul>
         </div>

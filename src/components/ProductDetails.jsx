@@ -11,6 +11,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 import { useDispatch } from 'react-redux';
+import {addCart} from '../redux/actions/index'
 
 const ProductDetails = () => {
 
@@ -20,8 +21,9 @@ const ProductDetails = () => {
     const [item, setItem] = useState(null);
 
     const dispatch = useDispatch();
-    const addProduct = (item) => {
-        dispatch(addProduct(item));
+    const addItems = (product) => {
+        console.log("1",product);
+        dispatch(addCart(product));
     }
 
     const ITEM_HEIGHT = 48;
@@ -142,6 +144,7 @@ const ProductDetails = () => {
                     alt="Product"
                     data-test="image-product"
                     data-testid="image-product"
+                    className='pic-detail'
                 />
                 <div className='details-container'>
                     <div className='details'>
@@ -228,13 +231,19 @@ const ProductDetails = () => {
                         <div>
                             <p data-test="price-product" data-testid="price-product">{item.price}</p>
                         </div>
-                        <div>
+                        <div className='btn-panier'>
                             <button
                                 name="Add to cart"
                                 className="panier-button"
-                                onClick={() => addProduct(item)}
+                                onClick={() => addItems(item)}
                             >
                                 Ajouter au panier
+                            </button>
+                            <button
+                                name="Show to cart"
+                                className="voir-p-button"
+                            >
+                                Voir panier
                             </button>
                         </div>
                     </div>
